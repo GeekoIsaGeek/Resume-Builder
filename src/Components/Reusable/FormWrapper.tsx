@@ -19,7 +19,7 @@ const FormWrapper = ({ children, heading, page }: Props) => {
 		justifyContent: `${page > 1 ? 'space-between' : 'flex-end'}`,
 	};
 
-	const handleNext = () => {
+	const nextHandler = () => {
 		if (page < 3) {
 			navigate(`/resume/${forms[page]}`);
 		} else {
@@ -27,7 +27,7 @@ const FormWrapper = ({ children, heading, page }: Props) => {
 		}
 	};
 
-	const handleBack = () => {
+	const backHandler = () => {
 		if (page > 1) {
 			navigate(`/resume/${forms[page - 2]}`);
 		}
@@ -44,8 +44,8 @@ const FormWrapper = ({ children, heading, page }: Props) => {
 			</StyledHeader>
 			{children}
 			<div style={buttonsWrapperStyles}>
-				{page > 1 && <StyledBtn onClick={() => handleBack()}>უკან</StyledBtn>}
-				<StyledBtn onClick={() => handleNext()}>შემდეგი</StyledBtn>
+				{page > 1 && <StyledBtn onClick={() => backHandler()}>უკან</StyledBtn>}
+				<StyledBtn onClick={() => nextHandler()}>შემდეგი</StyledBtn>
 			</div>
 		</StyledWrapper>
 	);

@@ -1,13 +1,19 @@
 import { createContext, useContext } from 'react';
 
-const formCtx = createContext({});
+interface Ctx {
+	forms: string[];
+}
+
+const formCtx = createContext<Ctx>({
+	forms: [],
+});
 
 interface Props {
 	children: React.ReactNode;
 }
 
 const FormContextProvider = ({ children }: Props) => {
-	const forms: string[] = ['personal-info', 'experience', 'education'];
+	const forms = ['personal-info', 'experience', 'education'];
 	return <formCtx.Provider value={{ forms }}>{children}</formCtx.Provider>;
 };
 
