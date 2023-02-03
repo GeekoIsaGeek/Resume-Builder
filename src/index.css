@@ -1,0 +1,23 @@
+@font-face {
+	font-family: 'Helvetica Neue';
+	src: url('./assets/HelveticaNeue.ttc');
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Helvetica Neue';
+}
+body {
+	min-width: 100%;
+	min-height: 100vh;
+	width: 1920px;
+	height: 1080px;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: unset;
+	color: inherit;
+}
