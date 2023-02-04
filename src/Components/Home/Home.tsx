@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import logo from '../../assets/images/Logo.png';
 import watermark from '../../assets/images/watermark.png';
-import background from '../../assets/images/home-bg.png';
+import background from '../../assets/images/home-bg.jpg';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
