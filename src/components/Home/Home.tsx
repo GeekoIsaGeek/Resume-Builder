@@ -22,6 +22,8 @@ export default Home;
 
 const StyledWrapper = styled.div`
 	background-image: url(${background}) !important;
+	background-repeat: no-repeat;
+	background-size: cover;
 	min-width: 100%;
 	min-height: 100vh;
 	width: 1920px;
@@ -60,7 +62,5 @@ const StyledButton = styled.button`
 	margin-top: 424px;
 	&:hover {
 		background-color: #3a3a3a;
-		box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
-			rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 	}
 `;

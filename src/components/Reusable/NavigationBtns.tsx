@@ -43,7 +43,7 @@ export const StyledBtn = styled.button`
     padding: 14px 35px;
     border-radius:4px;
     border:none;
-    letter-spacing:0.08em;
+    letter-spacing:0.1em;
     cursor:pointer;
     transition: background .2s ease-out;
     &:hover{

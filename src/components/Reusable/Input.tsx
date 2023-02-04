@@ -22,7 +22,7 @@ export default Input;
 const StyledInputWrapper = styled.div``;
 const StyledLabel = styled.h3`
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 `;
 const StyledInput = styled.input`
 	padding: 14px 16px;

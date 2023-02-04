@@ -24,7 +24,6 @@ const EducationForm = () => {
 		const getDegrees = async () => {
 			const resp = await fetch('https://resume.redberryinternship.ge/api/degrees');
 			const data = await resp.json();
-			console.log(data);
 			setDegrees(data);
 		};
 		getDegrees();

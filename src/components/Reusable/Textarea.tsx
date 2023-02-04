@@ -20,7 +20,7 @@ const StyledTextareaWrapper = styled.div``;
 
 const StyledLabel = styled.h3`
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 	margin-bottom: 8px;
 `;
 const StyledTextarea = styled.textarea`

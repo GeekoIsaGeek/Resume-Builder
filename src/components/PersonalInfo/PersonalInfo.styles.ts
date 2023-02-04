@@ -27,9 +27,9 @@ export const StyledUploader = styled.div`
 		color: white;
 		border: none;
 		outline: unset;
-		font-weight: 400;
+		font-weight: 500;
 		font-size: 14px;
-		padding: 5px 20px;
+		padding: 6px 10px;
 		border-radius: 4px;
 		cursor: pointer;
 		transition: background 0.2s linear;
@@ -41,7 +41,7 @@ export const StyledUploader = styled.div`
 		width: 232px;
 		height: 22px;
 		font-size: 18px;
-		font-weight: 500;
+		font-weight: 600;
 		color: ${(props) => props.theme.colors.offBlack};
 	}
 	input {

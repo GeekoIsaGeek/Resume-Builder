@@ -20,7 +20,7 @@ export const StyledSelectWrapper = styled.div`
 
 	h3 {
 		margin-bottom: 4px;
-		font-weight: 500;
+		font-weight: 600;
 		font-size: 16px;
 	}
 `;
