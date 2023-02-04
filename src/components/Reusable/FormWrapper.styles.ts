@@ -7,7 +7,7 @@ export const StyledWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 1080px;
+	min-height: 1080px;
 `;
 
 export const StyledHeader = styled.header`

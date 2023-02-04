@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 interface Props {
 	label: string;
-	ph: string;
-	criterias: string;
+	ph?: string;
+	criterias?: string;
 	type: string;
 }
 
