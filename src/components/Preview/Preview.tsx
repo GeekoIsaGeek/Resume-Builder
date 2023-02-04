@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../assets/images/LOGO-12-1.png';
+import logo from '../../assets/images/LOGO-12-1.png';
 
 const Preview = () => {
 	return (
