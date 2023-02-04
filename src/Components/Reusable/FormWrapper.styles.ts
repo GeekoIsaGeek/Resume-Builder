@@ -54,7 +54,7 @@ export const StyledBtn = styled.button`
 	font-weight: 500;
 	background-color: ${(props) => props.theme.colors.formBtn};
     color:white;
-    padding: 14px 25px;
+    padding: 14px 35px;
     border-radius:4px;
     border:none;
     letter-spacing:0.08em;
