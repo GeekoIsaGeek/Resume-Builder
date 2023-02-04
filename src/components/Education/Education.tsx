@@ -1,10 +1,10 @@
-import Preview from './Preview';
-import FormWrapper from './Reusable/FormWrapper';
+import Preview from '../Preview/Preview';
+import FormWrapper from '../Reusable/FormWrapper';
 import styled from 'styled-components';
-import NavigationBtns from './Reusable/NavigationBtns';
-import FormInnerWrapper from './Reusable/FormInnerWrapper';
+import NavigationBtns from '../Reusable/NavigationBtns';
+import FormInnerWrapper from '../Reusable/FormInnerWrapper';
 import EducationForm from './EducationForm';
-import AddMoreBtn from './Reusable/AddMoreBtn';
+import AddMoreBtn from '../Reusable/AddMoreBtn';
 
 const Education = () => {
 	return (

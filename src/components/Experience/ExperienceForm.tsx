@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Input from './Reusable/Input';
-import Textarea from './Reusable/Textarea';
+import Input from '../Reusable/Input';
+import Textarea from '../Reusable/Textarea';
 
 const ExperienceForm = () => {
 	return (

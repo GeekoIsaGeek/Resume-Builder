@@ -1,9 +1,9 @@
-import Preview from './Preview';
-import FormWrapper from './Reusable/FormWrapper';
-import Input from './Reusable/Input';
-import Textarea from './Reusable/Textarea';
-import NavigationBtns from './Reusable/NavigationBtns';
-import FormInnerWrapper from './Reusable/FormInnerWrapper';
+import Preview from '../Preview/Preview';
+import FormWrapper from '../Reusable/FormWrapper';
+import Input from '../Reusable/Input';
+import Textarea from '../Reusable/Textarea';
+import NavigationBtns from '../Reusable/NavigationBtns';
+import FormInnerWrapper from '../Reusable/FormInnerWrapper';
 import { StyledForm, StyledInputGroup, StyledUploader, StyledWrapper } from './PersonalInfo.styles';
 
 const PersonalInfo = () => {

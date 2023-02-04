@@ -1,8 +1,8 @@
 import Home from './components/Home/Home';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import PersonalInfo from './components/PersonalInfo';
-import Experience from './components/Experience';
-import Education from './components/Education';
+import PersonalInfo from './components/PersonalInfo/PersonalInfo';
+import Experience from './components/Experience/Experience';
+import Education from './components/Education/Education';
 
 function App() {
 	return (
