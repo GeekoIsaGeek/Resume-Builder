@@ -2,14 +2,16 @@ import Preview from './Preview';
 import FormWrapper from './Reusable/FormWrapper';
 import styled from 'styled-components';
 import NavigationBtns from './Reusable/NavigationBtns';
+import FormInnerWrapper from './Reusable/FormInnerWrapper';
 
 const Experience = () => {
 	return (
 		<StyledWrapper>
 			<FormWrapper heading='გამოცდილება' page={2}>
-				<StyledForm>
+				<FormInnerWrapper>
+					<StyledForm></StyledForm>
 					<NavigationBtns />
-				</StyledForm>
+				</FormInnerWrapper>
 			</FormWrapper>
 			<Preview />
 		</StyledWrapper>

@@ -2,14 +2,16 @@ import Preview from './Preview';
 import FormWrapper from './Reusable/FormWrapper';
 import styled from 'styled-components';
 import NavigationBtns from './Reusable/NavigationBtns';
+import FormInnerWrapper from './Reusable/FormInnerWrapper';
 
 const Education = () => {
 	return (
 		<StyledWrapper>
 			<FormWrapper heading='განათლება' page={3}>
-				<StyledForm>
+				<FormInnerWrapper>
+					<StyledForm></StyledForm>
 					<NavigationBtns />
-				</StyledForm>
+				</FormInnerWrapper>
 			</FormWrapper>
 			<Preview />
 		</StyledWrapper>
