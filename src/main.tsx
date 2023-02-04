@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import FormContextProvider from './store/formContext';
 
@@ -30,9 +30,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<FormContextProvider>
-				<BrowserRouter>
+				<HashRouter>
 					<App />
-				</BrowserRouter>
+				</HashRouter>
 			</FormContextProvider>
 		</ThemeProvider>
 	</React.StrictMode>
