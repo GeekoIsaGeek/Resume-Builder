@@ -28,7 +28,7 @@ const StyledInput = styled.input`
 	padding: 14px 16px;
 	border-radius: 4px;
 	border: 1px solid ${(props) => props.theme.colors.inputBorder};
-	outline: unset;
+	outline-color: gray;
 	font-weight: 400;
 	margin: 8px 0px;
 	width: 100%;

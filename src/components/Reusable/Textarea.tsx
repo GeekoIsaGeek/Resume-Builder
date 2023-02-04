@@ -26,7 +26,7 @@ const StyledLabel = styled.h3`
 const StyledTextarea = styled.textarea`
 	resize: none;
 	width: 100%;
-	outline: unset;
+	outline-color: gray;
 	padding: 13px 16px;
 	font-size: 16px;
 	font-weight: 400;
