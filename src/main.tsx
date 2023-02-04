@@ -12,10 +12,14 @@ const theme = {
 		offBlack: '#1a1a1a',
 		formBtn: ' #6B40E3',
 		formBtnHover: '#7949FF;',
+		previewTitle: ' rgba(249, 59, 29, 1)',
+		previewIcon: '#898989',
 	},
 	fontSize: {
 		label: '16px',
 		formBtn: '14px',
+		previewName: '34px',
+		previewTitle: '18px',
 	},
 	fontWeight: {
 		label: 500,

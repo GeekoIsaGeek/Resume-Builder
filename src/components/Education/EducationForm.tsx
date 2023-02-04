@@ -18,7 +18,7 @@ interface Degree {
 const EducationForm = () => {
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [degrees, setDegrees] = useState<Degree[]>([]);
-	const [degree, setDegree] = useState('სტუდენტი');
+	const [degree, setDegree] = useState('აირჩიეთ ხარისხი');
 
 	useEffect(() => {
 		const getDegrees = async () => {
