@@ -14,6 +14,8 @@ const theme = {
 		formBtnHover: '#7949FF;',
 		previewTitle: ' rgba(249, 59, 29, 1)',
 		previewIcon: '#898989',
+		validationSucceed: ' #98E37E',
+		validationFailed: '#EF5050',
 	},
 	fontSize: {
 		label: '16px',

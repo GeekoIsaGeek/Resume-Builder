@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { StyledBtnBack, StyledHeader, StyledWrapper } from './FormWrapper.styles';
@@ -13,7 +13,7 @@ interface Props {
 const FormWrapper = ({ children, heading, page }: Props) => {
 	const navigate = useNavigate();
 	const { currentForm } = useFormCtx();
-	currentForm.set(page);
+	useEffect(() => currentForm.set(page), []);
 
 	return (
 		<StyledWrapper>

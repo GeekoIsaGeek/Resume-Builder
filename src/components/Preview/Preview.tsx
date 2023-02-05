@@ -10,7 +10,6 @@ const Preview = ({ style }: { style?: React.CSSProperties }) => {
 		</StyledWrapper>
 	);
 };
-
 export default Preview;
 
 const StyledWrapper = styled.div`

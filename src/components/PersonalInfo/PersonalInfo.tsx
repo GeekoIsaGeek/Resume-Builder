@@ -5,6 +5,7 @@ import Textarea from '../Reusable/Textarea';
 import NavigationBtns from '../Reusable/NavigationBtns';
 import FormInnerWrapper from '../Reusable/FormInnerWrapper';
 import { StyledForm, StyledInputGroup, StyledUploader, StyledWrapper } from './PersonalInfo.styles';
+import { ValidateAndSetName } from '../../Validators';
 
 const PersonalInfo = () => {
 	const imgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

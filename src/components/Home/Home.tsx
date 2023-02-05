@@ -11,7 +11,7 @@ const Home = () => {
 				<StyledLogo src={logo} />
 			</header>
 			<StyledWatermarkLogo src={watermark} />
-			<Link to='/resume/personal-info'>
+			<Link to='/resume/personal-info' style={{ marginTop: '424px' }}>
 				<StyledButton>რეზიუმეს დამატება</StyledButton>
 			</Link>
 		</StyledWrapper>
@@ -59,7 +59,6 @@ const StyledButton = styled.button`
 	cursor: pointer;
 	border: none;
 	transition: 0.2s ease-out;
-	margin-top: 424px;
 	&:hover {
 		background-color: #3a3a3a;
 	}
