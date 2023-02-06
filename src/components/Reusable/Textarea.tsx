@@ -8,10 +8,14 @@ interface Props {
 const Textarea = ({ label, ph }: Props) => {
 	const handleChange = (element: HTMLTextAreaElement) => {
 		const value = element.value;
-		if (value.trim().length > 0) {
-			element.style.borderColor = '#98E37E';
+		if (label === 'აღწერა') {
+			if (value.trim().length > 0) {
+				element.style.borderColor = '#98E37E';
+			} else {
+				element.style.borderColor = '#EF5050';
+			}
 		} else {
-			element.style.borderColor = '#BCBCBC';
+			element.style.borderColor = '#98E37E';
 		}
 	};
 	return (

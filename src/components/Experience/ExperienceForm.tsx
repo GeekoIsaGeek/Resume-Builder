@@ -20,8 +20,8 @@ const ExperienceForm = () => {
 				validate={(value: string) => value.trim().length >= 2}
 			/>
 			<StyledDateInputGroup>
-				<Input label='დაწყების რიცხვი' type='date' />
-				<Input label='დამთავრების რიცხვი' type='date' />
+				<Input label='დაწყების რიცხვი' type='date' validate={(value) => !!value} />
+				<Input label='დამთავრების რიცხვი' type='date' validate={(value) => !!value} />
 			</StyledDateInputGroup>
 			<Textarea label='აღწერა' ph='როლი თანამდებობაზე და ზოგადი აღწერა' />
 			<div

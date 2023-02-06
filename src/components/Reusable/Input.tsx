@@ -14,7 +14,15 @@ const Input = ({ label, ph, criterias, type, validate }: Props) => {
 	const succeedSignRef = useRef<HTMLImageElement>(null);
 	const failedSignRef = useRef<HTMLImageElement>(null);
 
-	const handleChange = (element: HTMLInputElement | HTMLDataElement) => {
+	const handleBlur = (element: HTMLInputElement) => {
+		if (type === 'date') {
+			if (!element.value) {
+				element.style.borderColor = '#EF5050';
+			}
+		}
+	};
+
+	const handleChange = (element: HTMLInputElement) => {
 		const value = element.value;
 		const validated = validate(value);
 
@@ -23,16 +31,22 @@ const Input = ({ label, ph, criterias, type, validate }: Props) => {
 
 		if (validated) {
 			element.style.borderColor = '#98E37E';
-			succeedSignRef.current!.style.display = 'block';
+			if (type !== 'date') succeedSignRef.current!.style.display = 'block';
 		} else {
 			element.style.borderColor = '#EF5050';
-			failedSignRef.current!.style.display = 'block';
+			if (type !== 'date') failedSignRef.current!.style.display = 'block';
 		}
 	};
 	return (
 		<StyledInputWrapper>
 			<StyledLabel>{label}</StyledLabel>
-			<StyledInput placeholder={ph} type={type} onChange={(e) => handleChange(e.target)} />
+			<StyledInput
+				placeholder={ph}
+				type={type}
+				onChange={(e) => handleChange(e.target)}
+				onBlur={(e) => handleBlur(e.target)}
+				inputType={type}
+			/>
 			<StyledCriteria>{criterias}</StyledCriteria>
 			<StyledSucceedSign src={succeed} ref={succeedSignRef} />
 			<StyledFailedSign src={failed} ref={failedSignRef} />
@@ -49,8 +63,11 @@ const StyledLabel = styled.h3`
 	font-size: 16px;
 	font-weight: 600;
 `;
-const StyledInput = styled.input`
-	padding: 14px 45px 14px 16px;
+type InputProps = {
+	inputType: string;
+};
+const StyledInput = styled.input<InputProps>`
+	padding: 14px ${(props) => (props.inputType === 'date' ? '16px' : '45px')} 14px 16px;
 	border-radius: 4px;
 	border: 1px solid ${(props) => props.theme.colors.inputBorder};
 	outline: unset;
@@ -59,12 +76,17 @@ const StyledInput = styled.input`
 	width: 100%;
 	min-width: 370px;
 	font-size: 16px;
+	&::-webkit-calendar-picker-indicator {
+		width: 18px;
+		height: 20px;
+	}
 `;
 const StyledCriteria = styled.p`
 	color: #2e2e2e;
 	font-weight: 300;
 	font-size: 14px;
 `;
+
 const StyledSucceedSign = styled.img`
 	height: 16.5px;
 	width: 16.5px;

@@ -1,7 +1,7 @@
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
 import { GrDown } from 'react-icons/gr';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {
 	StyledDegreeAndDateWrapper,
 	StyledForm,
@@ -18,7 +18,8 @@ interface Degree {
 const EducationForm = () => {
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [degrees, setDegrees] = useState<Degree[]>([]);
-	const [degree, setDegree] = useState('აირჩიეთ ხარისხი');
+	const [degree, setDegree] = useState<string | null>(null);
+	const selectRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const getDegrees = async () => {
@@ -28,6 +29,16 @@ const EducationForm = () => {
 		};
 		getDegrees();
 	}, []);
+
+	const handleClick = (element: HTMLDivElement) => {
+		setShowDropDown((prev) => !prev);
+		if (!showDropDown) {
+			if (!degree) element.style.borderColor = '#EF5050';
+		}
+	};
+	useEffect(() => {
+		if (degree) selectRef.current!.style.borderColor = '#98E37E';
+	}, [degree]);
 
 	return (
 		<StyledForm>
@@ -41,8 +52,8 @@ const EducationForm = () => {
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
 					<h3>ხარისხი</h3>
-					<StyledSelect onClick={() => setShowDropDown((prev) => !prev)}>
-						{degree}
+					<StyledSelect onClick={(e) => handleClick(e.target as HTMLDivElement)} ref={selectRef}>
+						{degree || 'აირჩიეთ ხარისხი'}
 						<GrDown />
 						{showDropDown && (
 							<StyledOptions>
@@ -57,7 +68,7 @@ const EducationForm = () => {
 						)}
 					</StyledSelect>
 				</StyledSelectWrapper>
-				<Input label='დამთავრების რიცხვი' type='date' />
+				<Input label='დამთავრების რიცხვი' type='date' validate={(value) => !!value} />
 			</StyledDegreeAndDateWrapper>
 			<Textarea label='აღწერა' ph='განათლების აღწერა' />
 			<div
