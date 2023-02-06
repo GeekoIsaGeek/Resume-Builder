@@ -2,7 +2,6 @@ export const ValidateName = (value: string) => {
 	value = value.trim();
 	if (value.length >= 2) {
 		const regex = /^[ა-ჰ]+$/g;
-		console.log(new RegExp(regex).test(value));
 		return new RegExp(regex).test(value);
 	}
 };

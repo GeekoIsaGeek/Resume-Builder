@@ -8,9 +8,10 @@ interface Props {
 	criterias?: string;
 	type: string;
 	validate: (value: string) => boolean | undefined;
+	setter: (value: string) => void;
 }
 
-const Input = ({ label, ph, criterias, type, validate }: Props) => {
+const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
 	const succeedSignRef = useRef<HTMLImageElement>(null);
 	const failedSignRef = useRef<HTMLImageElement>(null);
 
@@ -29,6 +30,7 @@ const Input = ({ label, ph, criterias, type, validate }: Props) => {
 		succeedSignRef.current!.style.display = 'none';
 		failedSignRef.current!.style.display = 'none';
 
+		setter(value);
 		if (validated) {
 			element.style.borderColor = '#98E37E';
 			if (type !== 'date') succeedSignRef.current!.style.display = 'block';

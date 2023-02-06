@@ -16,7 +16,7 @@ const NavigationBtns = () => {
 		if (currentFormIdx < 3) {
 			navigate(`/resume/${forms[currentFormIdx]}`);
 		} else {
-			console.log('Submitting Form');
+			// submit form
 		}
 	};
 

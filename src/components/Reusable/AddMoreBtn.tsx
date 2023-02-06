@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
-const AddMoreBtn = ({ value }: { value: string }) => {
-	return <StyledButton onClick={(e) => e.preventDefault()}>{value}</StyledButton>;
+const AddMoreBtn = ({ value, onClickHandler }: { value: string; onClickHandler: () => void }) => {
+	return (
+		<StyledButton
+			onClick={(e) => {
+				e.preventDefault();
+				onClickHandler();
+			}}
+		>
+			{value}
+		</StyledButton>
+	);
 };
 
 export default AddMoreBtn;

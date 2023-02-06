@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
+import { Experience } from '../../store/FormContext-Types';
 
-const ExperienceForm = () => {
+const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 	return (
 		<StyledForm>
 			<Input

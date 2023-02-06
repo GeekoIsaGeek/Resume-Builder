@@ -1,4 +1,4 @@
-interface Experience {
+export interface Experience {
 	position: string;
 	employer: string;
 	start_date: string;
@@ -6,7 +6,7 @@ interface Experience {
 	description: string;
 }
 
-interface Education {
+export interface Education {
 	institute: string;
 	degree: string;
 	due_date: string;
