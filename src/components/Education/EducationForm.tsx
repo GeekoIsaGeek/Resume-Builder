@@ -9,18 +9,21 @@ import {
 	StyledSelect,
 	StyledSelectWrapper,
 } from './Education.styles';
+import { Education } from '../../store/FormContext-Types';
+import { useFormCtx } from '../../store/formContext';
 
 interface Degree {
 	id: number;
 	title: string;
 }
 
-const EducationForm = () => {
+const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [degrees, setDegrees] = useState<Degree[]>([]);
 	const [degree, setDegree] = useState<string | null>(null);
 	const selectRef = useRef<HTMLDivElement>(null);
-
+	const { setResumeData, resumeData } = useFormCtx();
+	console.log(resumeData);
 	useEffect(() => {
 		const getDegrees = async () => {
 			const resp = await fetch('https://resume.redberryinternship.ge/api/degrees');
@@ -37,8 +40,19 @@ const EducationForm = () => {
 		}
 	};
 	useEffect(() => {
-		if (degree) selectRef.current!.style.borderColor = '#98E37E';
+		if (degree) {
+			updateEducationsState(degree, 'degree');
+			selectRef.current!.style.borderColor = '#98E37E';
+		}
 	}, [degree]);
+
+	const updateEducationsState = (value: string, targetProperty: string) => {
+		const updatedObj: Education = { ...data, [targetProperty]: value };
+		const educations = resumeData.educations.filter((edu, i) => i !== idx);
+		setResumeData((prev) => {
+			return { ...prev, educations: [...educations, updatedObj] };
+		});
+	};
 
 	return (
 		<StyledForm>
@@ -48,6 +62,7 @@ const EducationForm = () => {
 				ph='სასწავლებელი'
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
+				setter={(value: string) => updateEducationsState(value, 'institute')}
 			/>
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
@@ -68,9 +83,18 @@ const EducationForm = () => {
 						)}
 					</StyledSelect>
 				</StyledSelectWrapper>
-				<Input label='დამთავრების რიცხვი' type='date' validate={(value) => !!value} />
+				<Input
+					label='დამთავრების რიცხვი'
+					type='date'
+					validate={(value) => !!value}
+					setter={(value: string) => updateEducationsState(value, 'due_date')}
+				/>
 			</StyledDegreeAndDateWrapper>
-			<Textarea label='აღწერა' ph='განათლების აღწერა' />
+			<Textarea
+				label='აღწერა'
+				ph='განათლების აღწერა'
+				setter={(value: string) => updateEducationsState(value, 'description')}
+			/>
 			<div
 				style={{
 					width: '100%',

@@ -10,12 +10,10 @@ import { resume } from '../../store/formContext';
 
 const Experience = () => {
 	const { setResumeData, resumeData } = useFormCtx();
-
 	return (
 		<StyledWrapper>
 			<FormWrapper heading='გამოცდილება' page={2}>
 				<FormInnerWrapper>
-					<ExperienceForm />
 					{resumeData.experiences.map((experienceObj, i) => {
 						return <ExperienceForm key={i} data={experienceObj} idx={i} />;
 					})}
