@@ -6,10 +6,18 @@ interface Props {
 }
 
 const Textarea = ({ label, ph }: Props) => {
+	const handleChange = (element: HTMLTextAreaElement) => {
+		const value = element.value;
+		if (value.trim().length > 0) {
+			element.style.borderColor = '#98E37E';
+		} else {
+			element.style.borderColor = '#BCBCBC';
+		}
+	};
 	return (
 		<StyledTextareaWrapper>
 			<StyledLabel>{label}</StyledLabel>
-			<StyledTextarea placeholder={ph}></StyledTextarea>
+			<StyledTextarea placeholder={ph} onChange={(e) => handleChange(e.target)}></StyledTextarea>
 		</StyledTextareaWrapper>
 	);
 };
@@ -26,7 +34,7 @@ const StyledLabel = styled.h3`
 const StyledTextarea = styled.textarea`
 	resize: none;
 	width: 100%;
-	outline-color: gray;
+	outline: unset;
 	padding: 13px 16px;
 	font-size: 16px;
 	font-weight: 400;

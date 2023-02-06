@@ -31,7 +31,13 @@ const EducationForm = () => {
 
 	return (
 		<StyledForm>
-			<Input label='სასწავლებელი' criterias='მინიმუმ 2 სიმბოლო' ph='სასწავლებელი' type='text' />
+			<Input
+				label='სასწავლებელი'
+				criterias='მინიმუმ 2 სიმბოლო'
+				ph='სასწავლებელი'
+				type='text'
+				validate={(value: string) => value.trim().length >= 2}
+			/>
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
 					<h3>ხარისხი</h3>

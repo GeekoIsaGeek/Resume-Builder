@@ -5,8 +5,20 @@ import Textarea from '../Reusable/Textarea';
 const ExperienceForm = () => {
 	return (
 		<StyledForm>
-			<Input label='თანამდებობა' ph='დეველოპერი, დიზაინერი, ა.შ' criterias='მინიმუმ 2 სიმბოლო' type='text' />
-			<Input label='დამსაქმებელი' ph='დამსაქმებელი' criterias='მინიმუმ 2 სიმბოლო' type='text' />
+			<Input
+				label='თანამდებობა'
+				ph='დეველოპერი, დიზაინერი, ა.შ'
+				criterias='მინიმუმ 2 სიმბოლო'
+				type='text'
+				validate={(value: string) => value.trim().length >= 2}
+			/>
+			<Input
+				label='დამსაქმებელი'
+				ph='დამსაქმებელი'
+				criterias='მინიმუმ 2 სიმბოლო'
+				type='text'
+				validate={(value: string) => value.trim().length >= 2}
+			/>
 			<StyledDateInputGroup>
 				<Input label='დაწყების რიცხვი' type='date' />
 				<Input label='დამთავრების რიცხვი' type='date' />
