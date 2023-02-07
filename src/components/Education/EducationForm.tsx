@@ -47,10 +47,9 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	}, [degree]);
 
 	const updateEducationsState = (value: string, targetProperty: string) => {
-		const updatedObj: Education = { ...data, [targetProperty]: value };
-		const educations = resumeData.educations.filter((edu, i) => i !== idx);
+		const educations = resumeData.educations.map((edu, i) => (i === idx ? { ...edu, [targetProperty]: value } : edu));
 		setResumeData((prev) => {
-			return { ...prev, educations: [...educations, updatedObj] };
+			return { ...prev, educations };
 		});
 	};
 

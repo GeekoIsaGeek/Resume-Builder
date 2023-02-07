@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
 import { Experience } from '../../store/FormContext-Types';
-import { resume, useFormCtx } from '../../store/formContext';
+import { useFormCtx } from '../../store/formContext';
 
 const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 	const { setResumeData, resumeData } = useFormCtx();
-	console.log(resumeData);
 
 	const updateExperiencesState = (value: string, targetProperty: string) => {
-		const updatedObj: Experience = { ...data, [targetProperty]: value };
-		const experiences = resumeData.experiences.filter((exp, i) => i !== idx);
+		const experiences = resumeData.experiences.map((exp, i) =>
+			i === idx ? { ...exp, [targetProperty]: value } : exp
+		);
 		setResumeData((prev) => {
-			return { ...prev, experiences: [...experiences, updatedObj] };
+			return { ...prev, experiences };
 		});
 	};
 	return (

@@ -51,6 +51,7 @@ export const StyledOptions = styled.ul`
 	background-color: white;
 	box-shadow: 0px 16px 28px 0px rgba(0, 0, 0, 0.24);
 	border-radius: 4px;
+	z-index: 10;
 	li {
 		width: 100%;
 		padding: 10px 16px;

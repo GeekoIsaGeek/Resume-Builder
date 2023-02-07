@@ -1,19 +1,27 @@
 import styled from 'styled-components';
 import { StyledTitle, StyledRole, StyledDate, StyledParagraph } from './Reusable.styles';
+import { useFormCtx } from '../../store/formContext';
 
 const Experience = () => {
+	const { resumeData } = useFormCtx();
+
 	return (
 		<StyledExperienceWrapper>
 			<StyledTitle>გამოცდილება</StyledTitle>
-			<StyledExperience>
-				<StyledRole>React Native Developer, Microsoft</StyledRole>
-				<StyledDate>2020-09-23 - 2020-09-23</StyledDate>
-				<StyledParagraph>
-					Experienced Javascript Native Developer with 5 years in the industry. proficient withreact. Used
-					problem-solving aptitude to encahge application performance by 14%.created data visualisation tools and
-					integrated designs.
-				</StyledParagraph>
-			</StyledExperience>
+			{resumeData.experiences.map((experience, i) => {
+				return (
+					<StyledExperience key={i}>
+						<StyledRole>
+							{experience.position}
+							{experience.employer && ','} {experience.employer}
+						</StyledRole>
+						<StyledDate>
+							{experience.start_date} {experience.due_date && `- ${experience.due_date}`}
+						</StyledDate>
+						<StyledParagraph>{experience.description}</StyledParagraph>
+					</StyledExperience>
+				);
+			})}
 		</StyledExperienceWrapper>
 	);
 };
