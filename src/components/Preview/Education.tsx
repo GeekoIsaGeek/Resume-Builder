@@ -4,17 +4,25 @@ import { useFormCtx } from '../../store/formContext';
 
 const Education = () => {
 	const { resumeData } = useFormCtx();
+	const isAnyInputFilled = () => {
+		return Array.from(Object.values(resumeData.educations[0])).some((value) => value !== '');
+	};
+
 	return (
 		<StyledEducationWrapper>
-			<StyledTitle>განათლება</StyledTitle>
-			{resumeData.educations.map((edu) => {
+			{isAnyInputFilled() && <StyledTitle>განათლება</StyledTitle>}
+			{resumeData.educations.map((edu, i) => {
 				return (
 					<StyledEducation>
 						<StyledRole>
 							{edu.institute} {edu.degree && `, ${edu.degree}`}
 						</StyledRole>
 						<StyledDate>{edu.due_date}</StyledDate>
-						<StyledParagraph>{edu.description}</StyledParagraph>
+						{edu.description && (
+							<StyledParagraph needsBorder={++i === resumeData.educations.length ? false : true}>
+								{edu.description}
+							</StyledParagraph>
+						)}
 					</StyledEducation>
 				);
 			})}

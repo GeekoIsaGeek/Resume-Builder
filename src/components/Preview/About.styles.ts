@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const StyledAboutWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	width: 100%;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #c8c8c8;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #bcbcbc;
 `;
 export const StyledAbout = styled.div`
 	width: 100%;

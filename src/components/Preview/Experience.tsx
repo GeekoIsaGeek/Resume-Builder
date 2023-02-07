@@ -4,10 +4,13 @@ import { useFormCtx } from '../../store/formContext';
 
 const Experience = () => {
 	const { resumeData } = useFormCtx();
+	const isAnyInputFilled = () => {
+		return Array.from(Object.values(resumeData.experiences[0])).some((value) => value !== '');
+	};
 
 	return (
 		<StyledExperienceWrapper>
-			<StyledTitle>გამოცდილება</StyledTitle>
+			{isAnyInputFilled() && <StyledTitle>გამოცდილება</StyledTitle>}
 			{resumeData.experiences.map((experience, i) => {
 				return (
 					<StyledExperience key={i}>
@@ -18,7 +21,9 @@ const Experience = () => {
 						<StyledDate>
 							{experience.start_date} {experience.due_date && `- ${experience.due_date}`}
 						</StyledDate>
-						<StyledParagraph>{experience.description}</StyledParagraph>
+						{experience.description && (
+							<StyledParagraph needsBorder={true}>{experience.description}</StyledParagraph>
+						)}
 					</StyledExperience>
 				);
 			})}
@@ -30,7 +35,6 @@ export default Experience;
 
 const StyledExperienceWrapper = styled.div`
 	padding-top: 24px;
-	border-bottom: 1px solid #c8c8c8;
 `;
 const StyledExperience = styled.div`
 	padding-bottom: 32px;
