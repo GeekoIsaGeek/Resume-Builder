@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const StyledAboutWrapper = styled.div`
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #c8c8c8;
@@ -19,6 +21,7 @@ export const StyledName = styled.h1`
 	color: ${(props) => props.theme.colors.previewTitle};
 	font-size: ${(props) => props.theme.fontSize.previewName};
 	margin-bottom: 17px;
+	word-break: break-word;
 `;
 export const StyledContactInfo = styled.div`
 	display: flex;

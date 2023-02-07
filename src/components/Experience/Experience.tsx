@@ -21,7 +21,7 @@ const Experience = () => {
 						value='მეტი გამოცდილების დამატება'
 						onClickHandler={() =>
 							setResumeData((prev) => {
-								//adding one more experience object (which is getting picked out of the initial state of formContext)
+								//adding one more experience object (which is getting picked from the initial state of formContext)
 								return { ...prev, experiences: [...prev.experiences, resume.experiences[0]] };
 							})
 						}

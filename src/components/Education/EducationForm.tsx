@@ -23,7 +23,7 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	const [degree, setDegree] = useState<string | null>(null);
 	const selectRef = useRef<HTMLDivElement>(null);
 	const { setResumeData, resumeData } = useFormCtx();
-	console.log(resumeData);
+
 	useEffect(() => {
 		const getDegrees = async () => {
 			const resp = await fetch('https://resume.redberryinternship.ge/api/degrees');

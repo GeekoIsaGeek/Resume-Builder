@@ -21,7 +21,7 @@ const Education = () => {
 						value='სხვა სასწავლებლის დამატება'
 						onClickHandler={() =>
 							setResumeData((prev) => {
-								//adding one more education object (which is getting picked out of the initial state of formContext)
+								//adding one more education object (which is getting picked from the initial state of formContext)
 								return { ...prev, educations: [...prev.educations, resume.educations[0]] };
 							})
 						}

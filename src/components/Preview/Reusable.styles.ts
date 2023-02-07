@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledParagraph = styled.p`
 	line-height: 22px;
 	font-size: 16px;
+	word-break: break-word;
 `;
 
 export const StyledTitle = styled.h3`
