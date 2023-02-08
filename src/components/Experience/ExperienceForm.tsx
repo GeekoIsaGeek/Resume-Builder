@@ -3,6 +3,7 @@ import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
 import { Experience } from '../../store/FormContext-Types';
 import { useFormCtx } from '../../store/formContext';
+import { StyledSeparatorLine } from '../Preview/Reusable.styles';
 
 const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 	const { setResumeData, resumeData } = useFormCtx();
@@ -52,15 +53,7 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 				ph='როლი თანამდებობაზე და ზოგადი აღწერა'
 				setter={(value: string) => updateExperiencesState(value, 'description')}
 			/>
-			<div
-				style={{
-					width: '100%',
-					height: '1px',
-					background: ' #C1C1C1',
-					marginTop: '28px',
-					marginBottom: '45px',
-				}}
-			></div>
+			<StyledSeparatorLine />
 		</StyledForm>
 	);
 };

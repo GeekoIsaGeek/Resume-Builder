@@ -35,7 +35,10 @@ export const StyledSelect = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
-
+	&:focus {
+		outline: 1px solid ${(props) => props.theme.colors.inputBorder};
+		border: 1px solid ${(props) => props.theme.colors.inputBorder} !important;
+	}
 	svg {
 		font-size: 14px;
 	}
@@ -45,7 +48,7 @@ export const StyledSelect = styled.div`
 
 export const StyledOptions = styled.ul`
 	position: absolute;
-	top: 103%;
+	top: 105%;
 	left: 0;
 	width: 100%;
 	background-color: white;

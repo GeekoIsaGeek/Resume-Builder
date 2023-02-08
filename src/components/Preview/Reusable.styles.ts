@@ -30,3 +30,10 @@ export const StyledDate = styled.h3`
 	font-size: 16px;
 	padding: 7px 0 16px 0;
 `;
+export const StyledSeparatorLine = styled.div`
+	width: 100%;
+	height: 1px;
+	background: #c1c1c1;
+	margin-top: 28px;
+	margin-bottom: 45px;
+`;

@@ -11,6 +11,7 @@ import {
 } from './Education.styles';
 import { Education } from '../../store/FormContext-Types';
 import { useFormCtx } from '../../store/formContext';
+import { StyledSeparatorLine } from '../Preview/Reusable.styles';
 
 interface Degree {
 	id: number;
@@ -66,7 +67,7 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
 					<h3>ხარისხი</h3>
-					<StyledSelect onClick={(e) => handleClick(e.target as HTMLDivElement)} ref={selectRef}>
+					<StyledSelect onClick={(e) => handleClick(e.target as HTMLDivElement)} ref={selectRef} tabIndex={0}>
 						{degree || 'აირჩიეთ ხარისხი'}
 						<GrDown />
 						{showDropDown && (
@@ -94,15 +95,7 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 				ph='განათლების აღწერა'
 				setter={(value: string) => updateEducationsState(value, 'description')}
 			/>
-			<div
-				style={{
-					width: '100%',
-					height: '1px',
-					background: ' #C1C1C1',
-					marginTop: '28px',
-					marginBottom: '45px',
-				}}
-			></div>
+			<StyledSeparatorLine />
 		</StyledForm>
 	);
 };

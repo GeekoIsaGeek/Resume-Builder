@@ -14,8 +14,9 @@ export const StyledInput = styled.input<InputProps>`
 	padding: 14px ${(props) => (props.inputType === 'date' ? '16px' : '45px')} 14px 16px;
 	border-radius: 4px;
 	border: 1px solid ${(props) => props.theme.colors.inputBorder};
-	outline: unset;
 	font-weight: 400;
+	outline-color: ${(props) => props.theme.colors.inputBorder};
+	outline-width: 2px;
 	margin: 8px 0px;
 	width: 100%;
 	min-width: 370px;

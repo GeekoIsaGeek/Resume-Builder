@@ -6,7 +6,7 @@ import { ValidateName, ValidateEmail, ValidateNumber } from '../../Validators';
 import { resume, useFormCtx } from '../../store/formContext';
 
 const PersonalInfoForm = () => {
-	const { setResumeData, resumeData } = useFormCtx();
+	const { setResumeData } = useFormCtx();
 	const uploadRef = useRef<HTMLInputElement>(null);
 
 	const imgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

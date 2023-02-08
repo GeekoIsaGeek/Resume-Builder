@@ -41,11 +41,12 @@ const StyledLabel = styled.h3`
 const StyledTextarea = styled.textarea`
 	resize: none;
 	width: 100%;
-	outline: unset;
 	padding: 13px 16px;
 	font-size: 16px;
 	font-weight: 400;
 	border-radius: 4px;
 	border: 1px solid ${(props) => props.theme.colors.inputBorder};
+	outline-color: ${(props) => props.theme.colors.inputBorder};
+	outline-width: 2px;
 	min-height: 105px;
 `;
