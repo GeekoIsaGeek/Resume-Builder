@@ -6,7 +6,7 @@ import FormInnerWrapper from '../Reusable/FormInnerWrapper';
 import ExperienceForm from './ExperienceForm';
 import AddMoreBtn from '../Reusable/AddMoreBtn';
 import { useFormCtx } from '../../store/formContext';
-import { resume } from '../../store/formContext';
+import initialResumeState from '../../store/initialResumeState';
 
 const Experience = () => {
 	const { setResumeData, resumeData } = useFormCtx();
@@ -21,8 +21,7 @@ const Experience = () => {
 						value='მეტი გამოცდილების დამატება'
 						onClickHandler={() =>
 							setResumeData((prev) => {
-								//adding one more experience object (which is getting picked from the initial state of formContext)
-								return { ...prev, experiences: [...prev.experiences, resume.experiences[0]] };
+								return { ...prev, experiences: [...prev.experiences, initialResumeState.experiences[0]] };
 							})
 						}
 					/>

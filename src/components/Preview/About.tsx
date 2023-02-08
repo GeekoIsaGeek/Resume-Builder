@@ -18,37 +18,37 @@ const About = () => {
 	const { name, surname, email, phone_number, about_me, image } = resumeData;
 
 	const isAnyInputFilled = () => {
-		return [name, surname, email, phone_number, about_me, image].some((value) => value !== '');
+		return [name, surname, email, phone_number, about_me, image].some((prop) => prop.value !== '');
 	};
 
 	return (
 		<StyledAboutWrapper needsBorder={isAnyInputFilled()}>
 			<StyledAbout>
 				<StyledName>
-					{name} {surname}
+					{name.value} {surname.value}
 				</StyledName>
 				<StyledContactInfo>
-					{email && (
+					{email.value && (
 						<StyledEmail>
 							<MdAlternateEmail />
-							<p>{email}</p>
+							<p>{email.value}</p>
 						</StyledEmail>
 					)}
-					{phone_number && (
+					{phone_number.value && (
 						<StyledPhoneNum>
 							<FaPhoneAlt />
-							<p>{phone_number}</p>
+							<p>{phone_number.value}</p>
 						</StyledPhoneNum>
 					)}
 				</StyledContactInfo>
-				{about_me && (
+				{about_me.value && (
 					<Fragment>
 						<StyledTitle>ჩემ შესახებ</StyledTitle>
-						<StyledParagraph needsBorder={false}>{about_me}</StyledParagraph>
+						<StyledParagraph needsBorder={false}>{about_me.value}</StyledParagraph>
 					</Fragment>
 				)}
 			</StyledAbout>
-			{image && <StyledPhoto src={image} />}
+			{image.value && <StyledPhoto src={image.value} />}
 		</StyledAboutWrapper>
 	);
 };

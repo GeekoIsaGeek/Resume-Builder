@@ -8,14 +8,17 @@ import { StyledSeparatorLine } from '../Preview/Reusable.styles';
 const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 	const { setResumeData, resumeData } = useFormCtx();
 
-	const updateExperiencesState = (value: string, targetProperty: string) => {
+	type TargetProperty = 'position' | 'employer' | 'start_date' | 'due_date' | 'description';
+
+	const updateExperiencesState = (value: string, targetProperty: TargetProperty) => {
 		const experiences = resumeData.experiences.map((exp, i) =>
-			i === idx ? { ...exp, [targetProperty]: value } : exp
+			i === idx ? { ...exp, [targetProperty]: { ...[targetProperty], value } } : exp
 		);
 		setResumeData((prev) => {
 			return { ...prev, experiences };
 		});
 	};
+
 	return (
 		<StyledForm>
 			<Input

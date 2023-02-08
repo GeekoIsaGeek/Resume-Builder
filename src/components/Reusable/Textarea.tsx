@@ -7,10 +7,11 @@ interface Props {
 }
 
 const Textarea = ({ label, ph, setter }: Props) => {
-	const handleChange = (element: HTMLTextAreaElement) => {
-		const value = element.value;
+	const handleChange = (value: string) => {
 		setter(value);
-
+	};
+	const handleBlur = (element: HTMLTextAreaElement) => {
+		const value = element.value;
 		if (label === 'აღწერა') {
 			if (value.trim().length > 0) {
 				element.style.borderColor = '#98E37E';
@@ -21,10 +22,15 @@ const Textarea = ({ label, ph, setter }: Props) => {
 			element.style.borderColor = '#98E37E';
 		}
 	};
+
 	return (
 		<StyledTextareaWrapper>
 			<StyledLabel>{label}</StyledLabel>
-			<StyledTextarea placeholder={ph} onChange={(e) => handleChange(e.target)}></StyledTextarea>
+			<StyledTextarea
+				placeholder={ph}
+				onChange={(e) => handleChange(e.target.value)}
+				onBlur={(e) => handleBlur(e.target)}
+			></StyledTextarea>
 		</StyledTextareaWrapper>
 	);
 };

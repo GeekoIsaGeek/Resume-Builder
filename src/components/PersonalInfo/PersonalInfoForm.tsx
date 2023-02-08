@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyledForm, StyledInputGroup, StyledUploader } from './PersonalInfo.styles';
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
 import { ValidateName, ValidateEmail, ValidateNumber } from '../../Validators';
-import { resume, useFormCtx } from '../../store/formContext';
+import { useFormCtx } from '../../store/formContext';
 
 const PersonalInfoForm = () => {
 	const { setResumeData } = useFormCtx();
@@ -14,8 +14,9 @@ const PersonalInfoForm = () => {
 			const file = e.target.files[0];
 			const url = URL.createObjectURL(file);
 			setResumeData((prev) => {
-				return { ...prev, image: url };
+				return { ...prev, image: { ...prev.image, value: url } };
 			});
+		} else {
 		}
 	};
 
@@ -30,7 +31,7 @@ const PersonalInfoForm = () => {
 					validate={ValidateName}
 					setter={(value) =>
 						setResumeData((prev) => {
-							return { ...prev, name: value };
+							return { ...prev, name: { ...prev.name, value } };
 						})
 					}
 				/>
@@ -42,7 +43,7 @@ const PersonalInfoForm = () => {
 					validate={ValidateName}
 					setter={(value) =>
 						setResumeData((prev) => {
-							return { ...prev, surname: value };
+							return { ...prev, surname: { ...prev.surname, value } };
 						})
 					}
 				/>
@@ -57,7 +58,7 @@ const PersonalInfoForm = () => {
 				ph='ზოგადი ინფო შენ შესახებ'
 				setter={(value) =>
 					setResumeData((prev) => {
-						return { ...prev, about_me: value };
+						return { ...prev, about_me: { ...prev.about_me, value } };
 					})
 				}
 			/>
@@ -69,7 +70,7 @@ const PersonalInfoForm = () => {
 				validate={ValidateEmail}
 				setter={(value) =>
 					setResumeData((prev) => {
-						return { ...prev, email: value };
+						return { ...prev, email: { ...prev.email, value } };
 					})
 				}
 			/>
@@ -81,7 +82,7 @@ const PersonalInfoForm = () => {
 				validate={ValidateNumber}
 				setter={(value) =>
 					setResumeData((prev) => {
-						return { ...prev, phone_number: value };
+						return { ...prev, phone_number: { ...prev.phone_number, value } };
 					})
 				}
 			/>

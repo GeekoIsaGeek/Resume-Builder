@@ -47,8 +47,12 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 		}
 	}, [degree]);
 
-	const updateEducationsState = (value: string, targetProperty: string) => {
-		const educations = resumeData.educations.map((edu, i) => (i === idx ? { ...edu, [targetProperty]: value } : edu));
+	type TargetProperty = 'institute' | 'due_date' | 'description' | 'degree';
+
+	const updateEducationsState = (value: string, targetProperty: TargetProperty) => {
+		const educations = resumeData.educations.map((edu, i) =>
+			i === idx ? { ...edu, [targetProperty]: { ...[targetProperty], value } } : edu
+		);
 		setResumeData((prev) => {
 			return { ...prev, educations };
 		});

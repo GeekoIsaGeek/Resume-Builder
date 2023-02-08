@@ -1,28 +1,30 @@
 import styled from 'styled-components';
 import { StyledTitle, StyledRole, StyledDate, StyledParagraph } from './Reusable.styles';
 import { useFormCtx } from '../../store/formContext';
+import { Experience as ExperienceType } from '../../store/FormContext-Types';
 
 const Experience = () => {
 	const { resumeData } = useFormCtx();
-	const isAnyInputFilled = () => {
-		return Array.from(Object.values(resumeData.experiences[0])).some((value) => value !== '');
+
+	const isAnyInputFilled = (obj: ExperienceType) => {
+		return Array.from(Object.values(obj)).some((prop) => prop.value !== '');
 	};
 
 	return (
 		<StyledExperienceWrapper>
-			{isAnyInputFilled() && <StyledTitle>გამოცდილება</StyledTitle>}
+			{isAnyInputFilled(resumeData.experiences[0]) && <StyledTitle>გამოცდილება</StyledTitle>}
 			{resumeData.experiences.map((experience, i) => {
 				return (
-					<StyledExperience key={i}>
+					<StyledExperience key={i} style={{ paddingBottom: `${isAnyInputFilled(experience) ? '24px' : 0}` }}>
 						<StyledRole>
-							{experience.position}
-							{experience.employer && ','} {experience.employer}
+							{experience.position.value}
+							{experience.employer.value && ','} {experience.employer.value}
 						</StyledRole>
 						<StyledDate>
-							{experience.start_date} {experience.due_date && `- ${experience.due_date}`}
+							{experience.start_date.value} {experience.due_date.value && `- ${experience.due_date.value}`}
 						</StyledDate>
-						{experience.description && (
-							<StyledParagraph needsBorder={true}>{experience.description}</StyledParagraph>
+						{experience.description.value && (
+							<StyledParagraph needsBorder={true}>{experience.description.value}</StyledParagraph>
 						)}
 					</StyledExperience>
 				);
@@ -36,6 +38,7 @@ export default Experience;
 const StyledExperienceWrapper = styled.div`
 	padding-top: 24px;
 `;
+
 const StyledExperience = styled.div`
 	padding-bottom: 24px;
 `;

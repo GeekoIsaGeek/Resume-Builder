@@ -1,27 +1,72 @@
 export interface Experience {
-	position: string;
-	employer: string;
-	start_date: string;
-	due_date: string;
-	description: string;
+	position: {
+		value: string;
+		valid: boolean;
+	};
+	employer: {
+		value: string;
+		valid: boolean;
+	};
+	start_date: {
+		value: string;
+		valid: boolean;
+	};
+	due_date: {
+		value: string;
+		valid: boolean;
+	};
+	description: {
+		value: string;
+		valid: boolean;
+	};
 }
 
 export interface Education {
-	institute: string;
-	degree: string;
-	due_date: string;
-	description: string;
+	institute: {
+		value: string;
+		valid: boolean;
+	};
+	degree: {
+		value: string;
+		valid: boolean;
+	};
+	due_date: {
+		value: string;
+		valid: boolean;
+	};
+	description: {
+		value: string;
+		valid: boolean;
+	};
 }
 
 interface Resume {
-	name: string;
-	surname: string;
-	email: string;
-	phone_number: string;
+	name: {
+		value: string;
+		valid: boolean;
+	};
+	surname: {
+		value: string;
+		valid: boolean;
+	};
+	email: {
+		value: string;
+		valid: boolean;
+	};
+	phone_number: {
+		value: string;
+		valid: boolean;
+	};
 	experiences: Experience[];
 	educations: Education[];
-	image: string;
-	about_me: string;
+	image: {
+		value: string;
+		valid: boolean;
+	};
+	about_me: {
+		value: string;
+		valid: boolean;
+	};
 }
 
 export interface FormCtx {

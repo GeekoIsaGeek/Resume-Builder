@@ -5,7 +5,7 @@ import { useFormCtx } from '../../store/formContext';
 const Education = () => {
 	const { resumeData } = useFormCtx();
 	const isAnyInputFilled = () => {
-		return Array.from(Object.values(resumeData.educations[0])).some((value) => value !== '');
+		return Array.from(Object.values(resumeData.educations[0])).some((prop) => prop.value !== '');
 	};
 
 	return (
@@ -15,12 +15,12 @@ const Education = () => {
 				return (
 					<StyledEducation key={i}>
 						<StyledRole>
-							{edu.institute} {edu.degree && `, ${edu.degree}`}
+							{edu.institute.value} {edu.degree.value && `, ${edu.degree.value}`}
 						</StyledRole>
-						<StyledDate>{edu.due_date}</StyledDate>
-						{edu.description && (
+						<StyledDate>{edu.due_date.value}</StyledDate>
+						{edu.description.value && (
 							<StyledParagraph needsBorder={i + 1 !== resumeData.educations.length}>
-								{edu.description}
+								{edu.description.value}
 							</StyledParagraph>
 						)}
 					</StyledEducation>

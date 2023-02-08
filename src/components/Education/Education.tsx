@@ -5,7 +5,8 @@ import NavigationBtns from '../Reusable/NavigationBtns';
 import FormInnerWrapper from '../Reusable/FormInnerWrapper';
 import EducationForm from './EducationForm';
 import AddMoreBtn from '../Reusable/AddMoreBtn';
-import { resume, useFormCtx } from '../../store/formContext';
+import { useFormCtx } from '../../store/formContext';
+import initialResumeState from '../../store/initialResumeState';
 
 const Education = () => {
 	const { setResumeData, resumeData } = useFormCtx();
@@ -21,8 +22,7 @@ const Education = () => {
 						value='სხვა სასწავლებლის დამატება'
 						onClickHandler={() =>
 							setResumeData((prev) => {
-								//adding one more education object (which is getting picked from the initial state of formContext)
-								return { ...prev, educations: [...prev.educations, resume.educations[0]] };
+								return { ...prev, educations: [...prev.educations, initialResumeState.educations[0]] };
 							})
 						}
 					/>
