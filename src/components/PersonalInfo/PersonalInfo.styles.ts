@@ -29,7 +29,7 @@ export const StyledUploader = styled.div`
 		outline: unset;
 		font-weight: 500;
 		font-size: 14px;
-		padding: 6px 10px;
+		padding: 4px 19px 6px 19px;
 		border-radius: 4px;
 		cursor: pointer;
 		transition: background 0.2s linear;

@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-export const StyledAboutWrapper = styled.div`
+type AboutWrapperProps = {
+	needsBorder: boolean;
+};
+export const StyledAboutWrapper = styled.div<AboutWrapperProps>`
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	width: 100%;
 	padding-bottom: 24px;
-	border-bottom: 1px solid #bcbcbc;
+	border-bottom: ${(props) => (props.needsBorder ? '1px solid #bcbcbc' : 'unset')};
 `;
 export const StyledAbout = styled.div`
 	width: 100%;

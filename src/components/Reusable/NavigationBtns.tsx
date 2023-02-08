@@ -28,7 +28,7 @@ const NavigationBtns = () => {
 	return (
 		<div style={buttonsWrapperStyles}>
 			{currentFormIdx > 1 && <StyledBtn onClick={() => backHandler()}>უკან</StyledBtn>}
-			<StyledBtn onClick={() => nextHandler()}>შემდეგი</StyledBtn>
+			<StyledBtn onClick={() => nextHandler()}>{currentFormIdx < 3 ? 'შემდეგი' : 'დასრულება'}</StyledBtn>
 		</div>
 	);
 };

@@ -37,5 +37,5 @@ const StyledExperienceWrapper = styled.div`
 	padding-top: 24px;
 `;
 const StyledExperience = styled.div`
-	padding-bottom: 32px;
+	padding-bottom: 24px;
 `;

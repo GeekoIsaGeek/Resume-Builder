@@ -19,7 +19,7 @@ const Education = () => {
 						</StyledRole>
 						<StyledDate>{edu.due_date}</StyledDate>
 						{edu.description && (
-							<StyledParagraph needsBorder={++i === resumeData.educations.length ? false : true}>
+							<StyledParagraph needsBorder={i + 1 !== resumeData.educations.length}>
 								{edu.description}
 							</StyledParagraph>
 						)}

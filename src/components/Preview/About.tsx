@@ -15,35 +15,40 @@ import { useFormCtx } from '../../store/formContext';
 
 const About = () => {
 	const { resumeData } = useFormCtx();
-	const img_Url = 'https://ied.eu/wp-content/uploads/2018/04/entrepreneur-1.jpg';
+	const { name, surname, email, phone_number, about_me, image } = resumeData;
+
+	const isAnyInputFilled = () => {
+		return [name, surname, email, phone_number, about_me, image].some((value) => value !== '');
+	};
+
 	return (
-		<StyledAboutWrapper>
+		<StyledAboutWrapper needsBorder={isAnyInputFilled()}>
 			<StyledAbout>
 				<StyledName>
-					{resumeData.name} {resumeData.surname}
+					{name} {surname}
 				</StyledName>
 				<StyledContactInfo>
-					{resumeData.email && (
+					{email && (
 						<StyledEmail>
 							<MdAlternateEmail />
-							<p>{resumeData.email}</p>
+							<p>{email}</p>
 						</StyledEmail>
 					)}
-					{resumeData.phone_number && (
+					{phone_number && (
 						<StyledPhoneNum>
 							<FaPhoneAlt />
-							<p>{resumeData.phone_number}</p>
+							<p>{phone_number}</p>
 						</StyledPhoneNum>
 					)}
 				</StyledContactInfo>
-				{resumeData.about_me && (
+				{about_me && (
 					<Fragment>
 						<StyledTitle>ჩემ შესახებ</StyledTitle>
-						<StyledParagraph needsBorder={false}>{resumeData.about_me}</StyledParagraph>
+						<StyledParagraph needsBorder={false}>{about_me}</StyledParagraph>
 					</Fragment>
 				)}
 			</StyledAbout>
-			<StyledPhoto src={resumeData.image} />
+			{image && <StyledPhoto src={image} />}
 		</StyledAboutWrapper>
 	);
 };
