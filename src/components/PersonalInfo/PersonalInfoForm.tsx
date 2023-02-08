@@ -3,15 +3,18 @@ import { StyledForm, StyledInputGroup, StyledUploader } from './PersonalInfo.sty
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
 import { ValidateName, ValidateEmail, ValidateNumber } from '../../Validators';
-import { useFormCtx } from '../../store/formContext';
+import { resume, useFormCtx } from '../../store/formContext';
 
 const PersonalInfoForm = () => {
 	const { setResumeData, resumeData } = useFormCtx();
-	console.log(resumeData);
 
 	const imgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
 			const file = e.target.files[0];
+			const url = URL.createObjectURL(file);
+			setResumeData((prev) => {
+				return { ...prev, image: url };
+			});
 		}
 	};
 	const handleUpload = (e: React.MouseEvent<HTMLButtonElement>) => {

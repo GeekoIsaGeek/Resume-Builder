@@ -13,7 +13,7 @@ const Education = () => {
 			{isAnyInputFilled() && <StyledTitle>განათლება</StyledTitle>}
 			{resumeData.educations.map((edu, i) => {
 				return (
-					<StyledEducation>
+					<StyledEducation key={i}>
 						<StyledRole>
 							{edu.institute} {edu.degree && `, ${edu.degree}`}
 						</StyledRole>
@@ -32,9 +32,7 @@ const Education = () => {
 
 export default Education;
 
-const StyledEducationWrapper = styled.div`
-	padding-top: 24px;
-`;
+const StyledEducationWrapper = styled.div``;
 const StyledEducation = styled.div`
 	padding-bottom: 32px;
 `;

@@ -43,7 +43,7 @@ const About = () => {
 					</Fragment>
 				)}
 			</StyledAbout>
-			<StyledPhoto src={img_Url} />
+			<StyledPhoto src={resumeData.image} />
 		</StyledAboutWrapper>
 	);
 };
