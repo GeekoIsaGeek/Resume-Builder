@@ -1,21 +1,46 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useFormCtx } from '../../store/formContext';
+import { Experience, Education } from '../../store/FormContext-Types';
 
 const NavigationBtns = () => {
 	const navigate = useNavigate();
-	const { forms, currentForm } = useFormCtx();
+	const { forms, currentForm, resumeData, setValidationFailed } = useFormCtx();
 	const currentFormIdx = currentForm.get;
 
 	const buttonsWrapperStyles = {
 		display: 'flex',
 		justifyContent: `${currentFormIdx > 1 ? 'space-between' : 'flex-end'}`,
 	};
+	const areAllValid = (properties: Experience[] | Education[]) => {
+		setValidationFailed(false);
+		console.log(properties[0]);
+		return Array.from(Object.values(properties[0])).every((property) => property.valid);
+	};
 
+	const isPersonalInfoValid = () => {
+		setValidationFailed(false);
+		return (
+			resumeData.name.valid &&
+			resumeData.about_me.valid &&
+			resumeData.email.valid &&
+			resumeData.image.valid &&
+			resumeData.phone_number.valid &&
+			resumeData.surname.valid
+		);
+	};
 	const nextHandler = () => {
 		if (currentFormIdx < 3) {
-			navigate(`/resume/${forms[currentFormIdx]}`);
+			if (currentFormIdx === 2) {
+				// validate form of experiences
+				areAllValid(resumeData.experiences)
+					? navigate(`/resume/${forms[currentFormIdx]}`)
+					: setValidationFailed(true);
+			} else {
+				isPersonalInfoValid() ? navigate(`/resume/${forms[currentFormIdx]}`) : setValidationFailed(true);
+			}
 		} else {
+			areAllValid(resumeData.educations) ? console.log('Everything is okay') : setValidationFailed(true);
 			// submit form
 		}
 	};

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { StyledForm, StyledInputGroup, StyledUploader } from './PersonalInfo.styles';
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
@@ -14,9 +14,12 @@ const PersonalInfoForm = () => {
 			const file = e.target.files[0];
 			const url = URL.createObjectURL(file);
 			setResumeData((prev) => {
-				return { ...prev, image: { ...prev.image, value: url } };
+				return { ...prev, image: { valid: true, value: url } };
 			});
 		} else {
+			setResumeData((prev) => {
+				return { ...prev, image: { ...prev.image, valid: false } };
+			});
 		}
 	};
 
@@ -29,9 +32,9 @@ const PersonalInfoForm = () => {
 					criterias='მინიმუმ 2 ასო, ქართული ასოები'
 					type='text'
 					validate={ValidateName}
-					setter={(value) =>
+					setter={(value: string, isValid: boolean) =>
 						setResumeData((prev) => {
-							return { ...prev, name: { ...prev.name, value } };
+							return { ...prev, name: { valid: isValid, value } };
 						})
 					}
 				/>
@@ -41,9 +44,9 @@ const PersonalInfoForm = () => {
 					criterias='მინიმუმ 2 ასო, ქართული ასოები'
 					type='text'
 					validate={ValidateName}
-					setter={(value) =>
+					setter={(value: string, isValid: boolean) =>
 						setResumeData((prev) => {
-							return { ...prev, surname: { ...prev.surname, value } };
+							return { ...prev, surname: { valid: isValid, value } };
 						})
 					}
 				/>
@@ -56,9 +59,9 @@ const PersonalInfoForm = () => {
 			<Textarea
 				label='ჩემ შესახებ (არასავალდებულო)'
 				ph='ზოგადი ინფო შენ შესახებ'
-				setter={(value) =>
+				setter={(value: string, isValid: boolean) =>
 					setResumeData((prev) => {
-						return { ...prev, about_me: { ...prev.about_me, value } };
+						return { ...prev, about_me: { valid: isValid, value } };
 					})
 				}
 			/>
@@ -68,9 +71,9 @@ const PersonalInfoForm = () => {
 				criterias='უნდა მთავრდებოდეს @redberry.ge-ით'
 				type='email'
 				validate={ValidateEmail}
-				setter={(value) =>
+				setter={(value: string, isValid: boolean) =>
 					setResumeData((prev) => {
-						return { ...prev, email: { ...prev.email, value } };
+						return { ...prev, email: { valid: isValid, value } };
 					})
 				}
 			/>
@@ -80,9 +83,9 @@ const PersonalInfoForm = () => {
 				criterias='უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს'
 				type='text'
 				validate={ValidateNumber}
-				setter={(value) =>
+				setter={(value: string, isValid: boolean) =>
 					setResumeData((prev) => {
-						return { ...prev, phone_number: { ...prev.phone_number, value } };
+						return { ...prev, phone_number: { valid: isValid, value } };
 					})
 				}
 			/>

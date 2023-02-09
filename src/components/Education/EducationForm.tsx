@@ -42,16 +42,16 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	};
 	useEffect(() => {
 		if (degree) {
-			updateEducationsState(degree, 'degree');
+			updateEducationsState(degree, 'degree', true);
 			selectRef.current!.style.borderColor = '#98E37E';
 		}
 	}, [degree]);
 
 	type TargetProperty = 'institute' | 'due_date' | 'description' | 'degree';
 
-	const updateEducationsState = (value: string, targetProperty: TargetProperty) => {
+	const updateEducationsState = (value: string, targetProperty: TargetProperty, isValid: boolean) => {
 		const educations = resumeData.educations.map((edu, i) =>
-			i === idx ? { ...edu, [targetProperty]: { ...[targetProperty], value } } : edu
+			i === idx ? { ...edu, [targetProperty]: { valid: isValid, value } } : edu
 		);
 		setResumeData((prev) => {
 			return { ...prev, educations };
@@ -66,7 +66,7 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 				ph='სასწავლებელი'
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
-				setter={(value: string) => updateEducationsState(value, 'institute')}
+				setter={(value: string, isValid: boolean) => updateEducationsState(value, 'institute', isValid)}
 			/>
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
@@ -91,13 +91,13 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 					label='დამთავრების რიცხვი'
 					type='date'
 					validate={(value) => !!value}
-					setter={(value: string) => updateEducationsState(value, 'due_date')}
+					setter={(value: string, isValid: boolean) => updateEducationsState(value, 'due_date', isValid)}
 				/>
 			</StyledDegreeAndDateWrapper>
 			<Textarea
 				label='აღწერა'
 				ph='განათლების აღწერა'
-				setter={(value: string) => updateEducationsState(value, 'description')}
+				setter={(value: string, isValid: boolean) => updateEducationsState(value, 'description', isValid)}
 			/>
 			<StyledSeparatorLine />
 		</StyledForm>

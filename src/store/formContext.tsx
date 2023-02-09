@@ -10,6 +10,8 @@ const formCtx = createContext<FormCtx>({
 	},
 	resumeData: initResume,
 	setResumeData: () => {},
+	validationFailed: false,
+	setValidationFailed: () => {},
 });
 
 interface Props {
@@ -20,6 +22,7 @@ const FormContextProvider = ({ children }: Props) => {
 	const forms = ['personal-info', 'experience', 'education'];
 	const [currForm, setCurrForm] = useState(1);
 	const [resumeData, setResumeData] = useState(initResume);
+	const [validationFailed, setValidationFailed] = useState(false);
 
 	const currentForm = {
 		get: currForm,
@@ -33,6 +36,8 @@ const FormContextProvider = ({ children }: Props) => {
 				currentForm,
 				resumeData,
 				setResumeData,
+				validationFailed,
+				setValidationFailed,
 			}}
 		>
 			{children}

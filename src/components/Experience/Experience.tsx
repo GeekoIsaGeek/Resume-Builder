@@ -7,9 +7,10 @@ import ExperienceForm from './ExperienceForm';
 import AddMoreBtn from '../Reusable/AddMoreBtn';
 import { useFormCtx } from '../../store/formContext';
 import initialResumeState from '../../store/initialResumeState';
+import ValidationError from '../Reusable/ValidationError';
 
 const Experience = () => {
-	const { setResumeData, resumeData } = useFormCtx();
+	const { setResumeData, resumeData, validationFailed } = useFormCtx();
 	return (
 		<StyledWrapper>
 			<FormWrapper heading='გამოცდილება' page={2}>
@@ -25,6 +26,7 @@ const Experience = () => {
 							})
 						}
 					/>
+					{validationFailed && <ValidationError />}
 					<NavigationBtns />
 				</FormInnerWrapper>
 			</FormWrapper>

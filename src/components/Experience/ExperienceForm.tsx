@@ -10,9 +10,9 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 
 	type TargetProperty = 'position' | 'employer' | 'start_date' | 'due_date' | 'description';
 
-	const updateExperiencesState = (value: string, targetProperty: TargetProperty) => {
+	const updateExperiencesState = (value: string, targetProperty: TargetProperty, isValid: boolean) => {
 		const experiences = resumeData.experiences.map((exp, i) =>
-			i === idx ? { ...exp, [targetProperty]: { ...[targetProperty], value } } : exp
+			i === idx ? { ...exp, [targetProperty]: { valid: isValid, value } } : exp
 		);
 		setResumeData((prev) => {
 			return { ...prev, experiences };
@@ -27,7 +27,7 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 				criterias='მინიმუმ 2 სიმბოლო'
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
-				setter={(value: string) => updateExperiencesState(value, 'position')}
+				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'position', isValid)}
 			/>
 			<Input
 				label='დამსაქმებელი'
@@ -35,26 +35,26 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 				criterias='მინიმუმ 2 სიმბოლო'
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
-				setter={(value: string) => updateExperiencesState(value, 'employer')}
+				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'employer', isValid)}
 			/>
 			<StyledDateInputGroup>
 				<Input
 					label='დაწყების რიცხვი'
 					type='date'
 					validate={(value) => !!value}
-					setter={(value: string) => updateExperiencesState(value, 'start_date')}
+					setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'start_date', isValid)}
 				/>
 				<Input
 					label='დამთავრების რიცხვი'
 					type='date'
 					validate={(value) => !!value}
-					setter={(value: string) => updateExperiencesState(value, 'due_date')}
+					setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'due_date', isValid)}
 				/>
 			</StyledDateInputGroup>
 			<Textarea
 				label='აღწერა'
 				ph='როლი თანამდებობაზე და ზოგადი აღწერა'
-				setter={(value: string) => updateExperiencesState(value, 'description')}
+				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'description', isValid)}
 			/>
 			<StyledSeparatorLine />
 		</StyledForm>

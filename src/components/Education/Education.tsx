@@ -7,9 +7,10 @@ import EducationForm from './EducationForm';
 import AddMoreBtn from '../Reusable/AddMoreBtn';
 import { useFormCtx } from '../../store/formContext';
 import initialResumeState from '../../store/initialResumeState';
+import ValidationError from '../Reusable/ValidationError';
 
 const Education = () => {
-	const { setResumeData, resumeData } = useFormCtx();
+	const { setResumeData, resumeData, validationFailed } = useFormCtx();
 
 	return (
 		<StyledWrapper>
@@ -26,6 +27,7 @@ const Education = () => {
 							})
 						}
 					/>
+					{validationFailed && <ValidationError />}
 					<NavigationBtns />
 				</FormInnerWrapper>
 			</FormWrapper>

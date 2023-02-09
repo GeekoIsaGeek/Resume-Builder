@@ -15,7 +15,7 @@ interface Props {
 	criterias?: string;
 	type: string;
 	validate: (value: string) => boolean | undefined;
-	setter: (value: string) => void;
+	setter: (value: string, isValid: boolean) => void;
 }
 
 const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
@@ -29,8 +29,13 @@ const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
 	};
 
 	const handleChange = (value: string) => {
-		setIsValidated(validate(value) as boolean);
-		setter(value);
+		const isValid = validate(value) as boolean;
+		setIsValidated(isValid);
+		if (type === 'date') {
+			setter(value, value ? true : false);
+		} else {
+			setter(value, isValid);
+		}
 	};
 
 	const handleBlur = (element: HTMLInputElement) => {

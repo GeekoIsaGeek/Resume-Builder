@@ -3,12 +3,12 @@ import styled from 'styled-components';
 interface Props {
 	label: string;
 	ph: string;
-	setter: (value: string) => void;
+	setter: (value: string, isValid: boolean) => void;
 }
 
 const Textarea = ({ label, ph, setter }: Props) => {
 	const handleChange = (value: string) => {
-		setter(value);
+		setter(value, value.trim().length > 0);
 	};
 	const handleBlur = (element: HTMLTextAreaElement) => {
 		const value = element.value;

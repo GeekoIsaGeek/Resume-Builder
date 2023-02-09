@@ -77,4 +77,6 @@ export interface FormCtx {
 	};
 	resumeData: Resume;
 	setResumeData: React.Dispatch<React.SetStateAction<Resume>>;
+	validationFailed: boolean;
+	setValidationFailed: React.Dispatch<React.SetStateAction<boolean>>;
 }
