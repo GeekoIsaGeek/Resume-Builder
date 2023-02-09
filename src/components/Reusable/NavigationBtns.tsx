@@ -12,10 +12,13 @@ const NavigationBtns = () => {
 		display: 'flex',
 		justifyContent: `${currentFormIdx > 1 ? 'space-between' : 'flex-end'}`,
 	};
-	const areAllValid = (properties: Experience[] | Education[]) => {
+	const areAllValid = (properties: (Experience | Education)[]) => {
 		setValidationFailed(false);
-		console.log(properties[0]);
-		return Array.from(Object.values(properties[0])).every((property) => property.valid);
+		// exclude additional forms that are unfilled
+		const filledForms = properties.filter((formData) =>
+			Array.from(Object.values(formData)).some((field) => field.value)
+		);
+		return filledForms.every((form) => Array.from(Object.values(form)).every((property) => property.valid));
 	};
 
 	const isPersonalInfoValid = () => {
