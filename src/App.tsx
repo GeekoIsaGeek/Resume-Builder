@@ -10,10 +10,10 @@ function App() {
 		<div>
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/resume' element={<BuiltResume />}></Route>
 				<Route path='/resume/personal-info' element={<PersonalInfo />} />
 				<Route path='/resume/experience' element={<Experience />} />
 				<Route path='/resume/education' element={<Education />} />
+				<Route path='/resume/preview' element={<BuiltResume />}></Route>
 				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>
 		</div>

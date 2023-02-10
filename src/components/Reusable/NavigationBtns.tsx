@@ -12,6 +12,7 @@ const NavigationBtns = () => {
 		display: 'flex',
 		justifyContent: `${currentFormIdx > 1 ? 'space-between' : 'flex-end'}`,
 	};
+
 	const areAllValid = (properties: (Experience | Education)[]) => {
 		setValidationFailed(false);
 		// exclude additional forms that are unfilled
@@ -43,8 +44,8 @@ const NavigationBtns = () => {
 				isPersonalInfoValid() ? navigate(`/resume/${forms[currentFormIdx]}`) : setValidationFailed(true);
 			}
 		} else {
-			areAllValid(resumeData.educations) ? console.log('Everything is okay') : setValidationFailed(true);
-			// submit form
+			// validate educations
+			areAllValid(resumeData.educations) ? navigate('/resume/preview') : setValidationFailed(true);
 		}
 	};
 

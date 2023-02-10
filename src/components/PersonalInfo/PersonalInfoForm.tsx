@@ -6,7 +6,7 @@ import { ValidateName, ValidateEmail, ValidateNumber } from '../../Validators';
 import { useFormCtx } from '../../store/formContext';
 
 const PersonalInfoForm = () => {
-	const { setResumeData } = useFormCtx();
+	const { setResumeData, resumeData } = useFormCtx();
 	const uploadRef = useRef<HTMLInputElement>(null);
 
 	const imgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +37,7 @@ const PersonalInfoForm = () => {
 							return { ...prev, name: { valid: isValid, value } };
 						})
 					}
+					value={resumeData.name.value}
 				/>
 				<Input
 					label='გვარი'
@@ -49,6 +50,7 @@ const PersonalInfoForm = () => {
 							return { ...prev, surname: { valid: isValid, value } };
 						})
 					}
+					value={resumeData.surname.value}
 				/>
 			</StyledInputGroup>
 			<StyledUploader>
@@ -71,6 +73,7 @@ const PersonalInfoForm = () => {
 						return { ...prev, about_me: { valid: isValid, value } };
 					})
 				}
+				value={resumeData.about_me.value}
 			/>
 			<Input
 				label='ელ.ფოსტა'
@@ -83,6 +86,7 @@ const PersonalInfoForm = () => {
 						return { ...prev, email: { valid: isValid, value } };
 					})
 				}
+				value={resumeData.email.value}
 			/>
 			<Input
 				label='მობილურის ნომერი'
@@ -95,6 +99,7 @@ const PersonalInfoForm = () => {
 						return { ...prev, phone_number: { valid: isValid, value } };
 					})
 				}
+				value={resumeData.phone_number.value}
 			/>
 		</StyledForm>
 	);

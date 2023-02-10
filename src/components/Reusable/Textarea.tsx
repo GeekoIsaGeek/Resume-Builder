@@ -4,9 +4,10 @@ interface Props {
 	label: string;
 	ph: string;
 	setter: (value: string, isValid: boolean) => void;
+	value: string;
 }
 
-const Textarea = ({ label, ph, setter }: Props) => {
+const Textarea = ({ label, ph, setter, value }: Props) => {
 	const handleChange = (value: string) => {
 		setter(value, value.trim().length > 0);
 	};
@@ -30,6 +31,7 @@ const Textarea = ({ label, ph, setter }: Props) => {
 				placeholder={ph}
 				onChange={(e) => handleChange(e.target.value)}
 				onBlur={(e) => handleBlur(e.target)}
+				value={value}
 			></StyledTextarea>
 		</StyledTextareaWrapper>
 	);

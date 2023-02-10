@@ -21,7 +21,7 @@ interface Degree {
 const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [degrees, setDegrees] = useState<Degree[]>([]);
-	const [degree, setDegree] = useState<string | null>(null);
+	const [degree, setDegree] = useState<string | null>(data.degree.value || null);
 	const selectRef = useRef<HTMLDivElement>(null);
 	const { setResumeData, resumeData } = useFormCtx();
 
@@ -67,6 +67,7 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
 				setter={(value: string, isValid: boolean) => updateEducationsState(value, 'institute', isValid)}
+				value={data.institute.value}
 			/>
 			<StyledDegreeAndDateWrapper>
 				<StyledSelectWrapper>
@@ -92,12 +93,14 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 					type='date'
 					validate={(value) => !!value}
 					setter={(value: string, isValid: boolean) => updateEducationsState(value, 'due_date', isValid)}
+					value={data.due_date.value}
 				/>
 			</StyledDegreeAndDateWrapper>
 			<Textarea
 				label='აღწერა'
 				ph='განათლების აღწერა'
 				setter={(value: string, isValid: boolean) => updateEducationsState(value, 'description', isValid)}
+				value={data.description.value}
 			/>
 			<StyledSeparatorLine />
 		</StyledForm>

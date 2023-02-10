@@ -16,12 +16,12 @@ interface Props {
 	type: string;
 	validate: (value: string) => boolean | undefined;
 	setter: (value: string, isValid: boolean) => void;
+	value: string;
 }
 
-const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
+const Input = ({ label, ph, criterias, type, validate, setter, value }: Props) => {
 	const succeedSignRef = useRef<HTMLImageElement>(null);
 	const failedSignRef = useRef<HTMLImageElement>(null);
-	const [isValidated, setIsValidated] = useState(false);
 
 	const handleFocus = () => {
 		succeedSignRef.current!.style.display = 'none';
@@ -30,7 +30,6 @@ const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
 
 	const handleChange = (value: string) => {
 		const isValid = validate(value) as boolean;
-		setIsValidated(isValid);
 		if (type === 'date') {
 			setter(value, value ? true : false);
 		} else {
@@ -39,8 +38,9 @@ const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
 	};
 
 	const handleBlur = (element: HTMLInputElement) => {
+		const isValidated = validate(element.value) as boolean;
 		if (type === 'date') {
-			// validating date input
+			// validating date inputs
 			if (!element.value) {
 				element.style.borderColor = '#EF5050';
 			} else {
@@ -67,6 +67,7 @@ const Input = ({ label, ph, criterias, type, validate, setter }: Props) => {
 				onBlur={(e) => handleBlur(e.target)}
 				inputType={type}
 				onFocus={() => handleFocus()}
+				value={value}
 			/>
 			<StyledCriteria>{criterias}</StyledCriteria>
 			<StyledSucceedSign src={succeed} ref={succeedSignRef} />

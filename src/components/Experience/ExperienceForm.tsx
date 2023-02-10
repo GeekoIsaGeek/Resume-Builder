@@ -28,6 +28,7 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
 				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'position', isValid)}
+				value={data.position.value}
 			/>
 			<Input
 				label='დამსაქმებელი'
@@ -36,6 +37,7 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 				type='text'
 				validate={(value: string) => value.trim().length >= 2}
 				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'employer', isValid)}
+				value={data.employer.value}
 			/>
 			<StyledDateInputGroup>
 				<Input
@@ -43,18 +45,21 @@ const ExperienceForm = ({ data, idx }: { data: Experience; idx: number }) => {
 					type='date'
 					validate={(value) => !!value}
 					setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'start_date', isValid)}
+					value={data.start_date.value}
 				/>
 				<Input
 					label='დამთავრების რიცხვი'
 					type='date'
 					validate={(value) => !!value}
 					setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'due_date', isValid)}
+					value={data.due_date.value}
 				/>
 			</StyledDateInputGroup>
 			<Textarea
 				label='აღწერა'
 				ph='როლი თანამდებობაზე და ზოგადი აღწერა'
 				setter={(value: string, isValid: boolean) => updateExperiencesState(value, 'description', isValid)}
+				value={data.description.value}
 			/>
 			<StyledSeparatorLine />
 		</StyledForm>
