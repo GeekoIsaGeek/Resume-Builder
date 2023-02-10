@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { FormCtx } from './FormContext-Types';
 import initResume from './initialResumeState';
 
@@ -29,6 +29,10 @@ const FormContextProvider = ({ children }: Props) => {
 		get: currForm,
 		set: setCurrForm,
 	};
+
+	useEffect(() => {
+		sessionStorage.setItem('data', JSON.stringify(resumeData));
+	}, [resumeData]);
 
 	return (
 		<formCtx.Provider

@@ -33,26 +33,20 @@ const NavigationBtns = () => {
 			resumeData.surname.valid
 		);
 	};
+
 	const nextHandler = () => {
 		if (currentFormIdx < 3) {
 			if (currentFormIdx === 2) {
 				// validate form of experiences
-				if (areAllValid(resumeData.experiences)) {
-					sessionStorage.setItem('data', JSON.stringify(resumeData));
-					navigate(`/resume/${forms[currentFormIdx]}`);
-				} else setValidationFailed(true);
+				areAllValid(resumeData.experiences)
+					? navigate(`/resume/${forms[currentFormIdx]}`)
+					: setValidationFailed(true);
 			} else {
-				if (isPersonalInfoValid()) {
-					sessionStorage.setItem('data', JSON.stringify(resumeData));
-					navigate(`/resume/${forms[currentFormIdx]}`);
-				} else setValidationFailed(true);
+				isPersonalInfoValid() ? navigate(`/resume/${forms[currentFormIdx]}`) : setValidationFailed(true);
 			}
 		} else {
 			// validate educations & handle submission
-			if (areAllValid(resumeData.educations)) {
-				sessionStorage.setItem('data', JSON.stringify(resumeData));
-				navigate('/resume/preview');
-			} else setValidationFailed(true);
+			areAllValid(resumeData.educations) ? navigate('/resume/preview') : setValidationFailed(true);
 		}
 	};
 
