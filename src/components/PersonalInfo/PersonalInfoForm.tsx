@@ -54,7 +54,14 @@ const PersonalInfoForm = () => {
 			<StyledUploader>
 				<input type='file' accept='.png, .jpg,.jpeg' onChange={(e) => imgHandler(e)} ref={uploadRef} />
 				<span>პირადი ფოტოს ატვირთვა</span>
-				<button onClick={() => uploadRef.current?.click()}>ატვირთვა</button>
+				<button
+					onClick={(e) => {
+						e.preventDefault();
+						uploadRef.current?.click();
+					}}
+				>
+					ატვირთვა
+				</button>
 			</StyledUploader>
 			<Textarea
 				label='ჩემ შესახებ (არასავალდებულო)'

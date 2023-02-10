@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import { useFormCtx } from '../../store/formContext';
 
 const ValidationError = () => {
-	return <StyledError>გასაგრძელებლად, დარწმუნდით რომ ყველა ველი სწორად გაქვთ შევსებული!</StyledError>;
+	const { currentForm } = useFormCtx();
+	return (
+		<StyledError>
+			{currentForm.get < 3 ? 'გასაგრძელებლად' : 'დასასრულებლად'}, დარწმუნდით რომ ყველა ველი სწორად გაქვთ შევსებული!
+		</StyledError>
+	);
 };
 export default ValidationError;
 
