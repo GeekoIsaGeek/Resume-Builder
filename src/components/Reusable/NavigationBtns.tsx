@@ -37,15 +37,22 @@ const NavigationBtns = () => {
 		if (currentFormIdx < 3) {
 			if (currentFormIdx === 2) {
 				// validate form of experiences
-				areAllValid(resumeData.experiences)
-					? navigate(`/resume/${forms[currentFormIdx]}`)
-					: setValidationFailed(true);
+				if (areAllValid(resumeData.experiences)) {
+					sessionStorage.setItem('data', JSON.stringify(resumeData));
+					navigate(`/resume/${forms[currentFormIdx]}`);
+				} else setValidationFailed(true);
 			} else {
-				isPersonalInfoValid() ? navigate(`/resume/${forms[currentFormIdx]}`) : setValidationFailed(true);
+				if (isPersonalInfoValid()) {
+					sessionStorage.setItem('data', JSON.stringify(resumeData));
+					navigate(`/resume/${forms[currentFormIdx]}`);
+				} else setValidationFailed(true);
 			}
 		} else {
-			// validate educations
-			areAllValid(resumeData.educations) ? navigate('/resume/preview') : setValidationFailed(true);
+			// validate educations & handle submission
+			if (areAllValid(resumeData.educations)) {
+				sessionStorage.setItem('data', JSON.stringify(resumeData));
+				navigate('/resume/preview');
+			} else setValidationFailed(true);
 		}
 	};
 
@@ -54,6 +61,7 @@ const NavigationBtns = () => {
 			navigate(`/resume/${forms[currentFormIdx - 2]}`);
 		}
 	};
+
 	return (
 		<div style={buttonsWrapperStyles}>
 			{currentFormIdx > 1 && <StyledBtn onClick={() => backHandler()}>უკან</StyledBtn>}

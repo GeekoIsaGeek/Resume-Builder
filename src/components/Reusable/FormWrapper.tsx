@@ -3,6 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { StyledBtnBack, StyledHeader, StyledWrapper } from './FormWrapper.styles';
 import { useFormCtx } from '../../store/formContext';
+import initialState from '../../store/initialResumeState';
 
 interface Props {
 	children: React.ReactNode;
@@ -12,12 +13,18 @@ interface Props {
 
 const FormWrapper = ({ children, heading, page }: Props) => {
 	const navigate = useNavigate();
-	const { currentForm } = useFormCtx();
+	const { currentForm, setResumeData } = useFormCtx();
 	useEffect(() => currentForm.set(page), []);
+
+	const handleClick = () => {
+		sessionStorage.removeItem('data');
+		setResumeData(initialState);
+		navigate('/');
+	};
 
 	return (
 		<StyledWrapper>
-			<StyledBtnBack onClick={() => navigate('/')}>
+			<StyledBtnBack onClick={() => handleClick()}>
 				<IoIosArrowBack />
 			</StyledBtnBack>
 			<StyledHeader>

@@ -21,7 +21,8 @@ interface Props {
 const FormContextProvider = ({ children }: Props) => {
 	const forms = ['personal-info', 'experience', 'education'];
 	const [currForm, setCurrForm] = useState(1);
-	const [resumeData, setResumeData] = useState(initResume);
+	const formData = JSON.parse(sessionStorage.getItem('data') as string);
+	const [resumeData, setResumeData] = useState(formData || initResume);
 	const [validationFailed, setValidationFailed] = useState(false);
 
 	const currentForm = {
