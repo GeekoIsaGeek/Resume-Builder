@@ -27,7 +27,6 @@ const NavigationBtns = () => {
 		setValidationFailed(false);
 		return (
 			resumeData.name.valid &&
-			resumeData.about_me.valid &&
 			resumeData.email.valid &&
 			resumeData.image.valid &&
 			resumeData.phone_number.valid &&

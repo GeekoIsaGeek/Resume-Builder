@@ -14,6 +14,7 @@ const PersonalInfoForm = () => {
 			const file = e.target.files[0];
 			const reader = new FileReader();
 			reader.onloadend = () => {
+				// @ts-ignore
 				setResumeData((prev) => {
 					return { ...prev, image: { valid: true, value: reader.result } };
 				});
@@ -25,6 +26,19 @@ const PersonalInfoForm = () => {
 			});
 			window.alert('აუცილებელია აირჩიოთ 5მბ-ზე მცირე ზომის სურათი');
 		}
+	};
+
+	const getFormattedValue = () => {
+		const init = resumeData.phone_number.value.replaceAll(' ', '');
+		let value: string = '';
+		for (let i = 0; i < init.length; i++) {
+			if (i === 3 || i === 6 || i === 8 || i === 10) {
+				value += init[i] + ' ';
+			} else {
+				value += init[i];
+			}
+		}
+		return value;
 	};
 
 	return (

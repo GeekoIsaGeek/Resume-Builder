@@ -1,6 +1,6 @@
 import succeed from '../../assets/images/Succeed.svg';
 import failed from '../../assets/images/Failed.svg';
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import {
 	StyledCriteria,
 	StyledFailedSign,
@@ -38,7 +38,22 @@ const Input = ({ label, ph, criterias, type, validate, setter, value }: Props) =
 	};
 
 	const handleBlur = (element: HTMLInputElement) => {
-		const isValidated = validate(element.value) as boolean;
+		let isValidated = validate(element.value) as boolean;
+
+		if (label === 'მობილურის ნომერი') {
+			const init = value.replaceAll(' ', '');
+			let val: string = '';
+			for (let i = 0; i < init.length; i++) {
+				if (i === 3 || i === 6 || i === 8 || i === 10) {
+					val += init[i] + ' ';
+				} else {
+					val += init[i];
+				}
+			}
+			setter(val, validate(val) as boolean);
+			isValidated = validate(val) as boolean;
+		}
+
 		if (type === 'date') {
 			// validating date inputs
 			if (!element.value) {
