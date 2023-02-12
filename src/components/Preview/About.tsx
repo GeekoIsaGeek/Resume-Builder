@@ -11,10 +11,11 @@ import {
 	StyledPhoneNum,
 	StyledPhoto,
 } from './About.styles';
-import { Resume } from '../../store/FormContext-Types';
+import { useFormCtx } from '../../store/formContext';
 
-const About = ({ data }: { data: Resume }) => {
-	const { name, surname, email, phone_number, about_me, image } = data;
+const About = () => {
+	const { resumeData } = useFormCtx();
+	const { name, surname, email, phone_number, about_me, image } = resumeData;
 
 	const isAnyInputFilled = () => {
 		return [name, surname, email, phone_number, about_me, image].some((prop) => prop.value !== '');

@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { StyledTitle, StyledRole, StyledDate, StyledParagraph } from './Reusable.styles';
 import { Experience as ExperienceType } from '../../store/FormContext-Types';
 import { Resume } from '../../store/FormContext-Types';
+import { useFormCtx } from '../../store/formContext';
 
-const Experience = ({ data }: { data: Resume }) => {
+const Experience = () => {
+	const { resumeData: data } = useFormCtx();
 	const isAnyInputFilled = (obj: ExperienceType) => {
 		return Array.from(Object.values(obj)).some((prop) => prop.value !== '');
 	};

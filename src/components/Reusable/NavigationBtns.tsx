@@ -5,7 +5,7 @@ import { Experience, Education } from '../../store/FormContext-Types';
 
 const NavigationBtns = () => {
 	const navigate = useNavigate();
-	const { forms, currentForm, resumeData, setValidationFailed, setIsDone } = useFormCtx();
+	const { forms, currentForm, resumeData, setValidationFailed, setIsDone, setResumeData } = useFormCtx();
 	const currentFormIdx = currentForm.get;
 
 	const buttonsWrapperStyles = {
@@ -48,6 +48,7 @@ const NavigationBtns = () => {
 			// validate educations & handle submission
 			if (areAllValid(resumeData.educations) && areAllValid(resumeData.experiences) && isPersonalInfoValid()) {
 				setIsDone(true);
+				sessionStorage.removeItem('data');
 				navigate('/resume/preview');
 			} else setValidationFailed(true);
 		}

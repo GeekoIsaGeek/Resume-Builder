@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { StyledDate, StyledParagraph, StyledRole, StyledTitle } from './Reusable.styles';
 import { Resume } from '../../store/FormContext-Types';
+import { useFormCtx } from '../../store/formContext';
 
-const Education = ({ data }: { data: Resume }) => {
+const Education = () => {
+	const { resumeData: data } = useFormCtx();
 	const isAnyInputFilled = () => {
 		return Array.from(Object.values(data.educations[0])).some((prop) => prop.value !== '');
 	};

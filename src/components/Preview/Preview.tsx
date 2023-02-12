@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import logo from '../../assets/images/LOGO-12-1.png';
 import Resume from './Resume';
-import { useFormCtx } from '../../store/formContext';
 import { Resume as ResumeTypes } from '../../store/FormContext-Types';
 
 interface PreviewTypes {
