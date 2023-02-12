@@ -13,26 +13,11 @@ import { Education } from '../../store/FormContext-Types';
 import { useFormCtx } from '../../store/formContext';
 import { StyledSeparatorLine } from '../Preview/Reusable.styles';
 
-interface Degree {
-	id: number;
-	title: string;
-}
-
 const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 	const [showDropDown, setShowDropDown] = useState(false);
-	const [degrees, setDegrees] = useState<Degree[]>([]);
 	const [degree, setDegree] = useState<string | null>(data.degree.value || null);
 	const selectRef = useRef<HTMLDivElement>(null);
-	const { setResumeData, resumeData } = useFormCtx();
-
-	useEffect(() => {
-		const getDegrees = async () => {
-			const resp = await fetch('https://resume.redberryinternship.ge/api/degrees');
-			const data = await resp.json();
-			setDegrees(data);
-		};
-		getDegrees();
-	}, []);
+	const { setResumeData, resumeData, degrees, setDegrees } = useFormCtx();
 
 	const handleClick = (element: HTMLDivElement) => {
 		setShowDropDown((prev) => !prev);
@@ -57,7 +42,14 @@ const EducationForm = ({ data, idx }: { data: Education; idx: number }) => {
 			return { ...prev, educations };
 		});
 	};
-
+	useEffect(() => {
+		const getDegrees = async () => {
+			const resp = await fetch('https://resume.redberryinternship.ge/api/degrees');
+			const data = await resp.json();
+			setDegrees(data);
+		};
+		getDegrees();
+	}, []);
 	return (
 		<StyledForm>
 			<Input

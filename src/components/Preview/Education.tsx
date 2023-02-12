@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import { StyledDate, StyledParagraph, StyledRole, StyledTitle } from './Reusable.styles';
-import { useFormCtx } from '../../store/formContext';
+import { Resume } from '../../store/FormContext-Types';
 
-const Education = () => {
-	const { resumeData } = useFormCtx();
+const Education = ({ data }: { data: Resume }) => {
 	const isAnyInputFilled = () => {
-		return Array.from(Object.values(resumeData.educations[0])).some((prop) => prop.value !== '');
+		return Array.from(Object.values(data.educations[0])).some((prop) => prop.value !== '');
 	};
 
 	return (
 		<StyledEducationWrapper>
 			{isAnyInputFilled() && <StyledTitle>განათლება</StyledTitle>}
-			{resumeData.educations.map((edu, i) => {
+			{data.educations.map((edu, i) => {
 				return (
 					<StyledEducation key={i}>
 						<StyledRole>
@@ -19,7 +18,7 @@ const Education = () => {
 						</StyledRole>
 						<StyledDate>{edu.due_date.value}</StyledDate>
 						{edu.description.value && (
-							<StyledParagraph needsBorder={i + 1 !== resumeData.educations.length}>
+							<StyledParagraph needsBorder={i + 1 !== data.educations.length}>
 								{edu.description.value}
 							</StyledParagraph>
 						)}

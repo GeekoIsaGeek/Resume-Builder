@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { FormCtx } from './FormContext-Types';
+import { Degree, FormCtx } from './FormContext-Types';
 import initResume from './initialResumeState';
 
 const formCtx = createContext<FormCtx>({
@@ -12,6 +12,10 @@ const formCtx = createContext<FormCtx>({
 	setResumeData: () => {},
 	validationFailed: false,
 	setValidationFailed: () => {},
+	isDone: false,
+	setIsDone: () => {},
+	degrees: [],
+	setDegrees: () => {},
 });
 
 interface Props {
@@ -24,6 +28,8 @@ const FormContextProvider = ({ children }: Props) => {
 	const formData = JSON.parse(sessionStorage.getItem('data') as string);
 	const [resumeData, setResumeData] = useState(formData || initResume);
 	const [validationFailed, setValidationFailed] = useState(false);
+	const [isDone, setIsDone] = useState(false);
+	const [degrees, setDegrees] = useState<Degree[]>([]);
 
 	const currentForm = {
 		get: currForm,
@@ -43,6 +49,10 @@ const FormContextProvider = ({ children }: Props) => {
 				setResumeData,
 				validationFailed,
 				setValidationFailed,
+				isDone,
+				setIsDone,
+				degrees,
+				setDegrees,
 			}}
 		>
 			{children}

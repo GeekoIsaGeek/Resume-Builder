@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import logo from '../../assets/images/LOGO-12-1.png';
 import Resume from './Resume';
+import { useFormCtx } from '../../store/formContext';
+import { Resume as ResumeTypes } from '../../store/FormContext-Types';
 
-const Preview = ({ style }: { style?: React.CSSProperties }) => {
+interface PreviewTypes {
+	style?: React.CSSProperties;
+	data: ResumeTypes;
+}
+
+const Preview = ({ style, data }: PreviewTypes) => {
 	return (
 		<StyledWrapper style={style}>
-			<Resume />
+			<Resume data={data} />
 			<StyledLogo src={logo} />
 		</StyledWrapper>
 	);

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyledForm, StyledInputGroup, StyledUploader } from './PersonalInfo.styles';
 import Input from '../Reusable/Input';
 import Textarea from '../Reusable/Textarea';
@@ -10,16 +10,20 @@ const PersonalInfoForm = () => {
 	const uploadRef = useRef<HTMLInputElement>(null);
 
 	const imgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
+		if (e.target.files && e.target.files[0]?.size < 5000000) {
 			const file = e.target.files[0];
-			const url = URL.createObjectURL(file);
-			setResumeData((prev) => {
-				return { ...prev, image: { valid: true, value: url } };
-			});
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setResumeData((prev) => {
+					return { ...prev, image: { valid: true, value: reader.result } };
+				});
+			};
+			reader.readAsDataURL(file);
 		} else {
 			setResumeData((prev) => {
 				return { ...prev, image: { ...prev.image, valid: false } };
 			});
+			window.alert('აუცილებელია აირჩიოთ 5მბ-ზე მცირე ზომის სურათი');
 		}
 	};
 

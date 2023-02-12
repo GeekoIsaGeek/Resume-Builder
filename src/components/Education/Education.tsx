@@ -31,7 +31,7 @@ const Education = () => {
 					<NavigationBtns />
 				</FormInnerWrapper>
 			</FormWrapper>
-			<Preview />
+			<Preview data={resumeData} />
 		</StyledWrapper>
 	);
 };

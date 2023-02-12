@@ -30,7 +30,7 @@ const Experience = () => {
 					<NavigationBtns />
 				</FormInnerWrapper>
 			</FormWrapper>
-			<Preview />
+			<Preview data={resumeData} />
 		</StyledWrapper>
 	);
 };

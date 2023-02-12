@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 import { StyledTitle, StyledRole, StyledDate, StyledParagraph } from './Reusable.styles';
-import { useFormCtx } from '../../store/formContext';
 import { Experience as ExperienceType } from '../../store/FormContext-Types';
+import { Resume } from '../../store/FormContext-Types';
 
-const Experience = () => {
-	const { resumeData } = useFormCtx();
-
+const Experience = ({ data }: { data: Resume }) => {
 	const isAnyInputFilled = (obj: ExperienceType) => {
 		return Array.from(Object.values(obj)).some((prop) => prop.value !== '');
 	};
 
 	return (
 		<StyledExperienceWrapper>
-			{isAnyInputFilled(resumeData.experiences[0]) && <StyledTitle>გამოცდილება</StyledTitle>}
-			{resumeData.experiences.map((experience, i) => {
+			{isAnyInputFilled(data.experiences[0]) && <StyledTitle>გამოცდილება</StyledTitle>}
+			{data.experiences.map((experience, i) => {
 				return (
 					<StyledExperience key={i} style={{ paddingBottom: `${isAnyInputFilled(experience) ? '24px' : 0}` }}>
 						<StyledRole>

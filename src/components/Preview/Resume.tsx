@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import About from './About';
 import Experience from './Experience';
 import Education from './Education';
+import { Resume as ResumeTypes } from '../../store/FormContext-Types';
 
-const Resume = () => {
+const Resume = ({ data }: { data: ResumeTypes }) => {
 	return (
 		<StyledResume>
-			<About />
-			<Experience />
-			<Education />
+			<About data={data} />
+			<Experience data={data} />
+			<Education data={data} />
 		</StyledResume>
 	);
 };

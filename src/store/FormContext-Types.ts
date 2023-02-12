@@ -40,7 +40,7 @@ export interface Education {
 	};
 }
 
-interface Resume {
+export interface Resume {
 	name: {
 		value: string;
 		valid: boolean;
@@ -79,4 +79,13 @@ export interface FormCtx {
 	setResumeData: React.Dispatch<React.SetStateAction<Resume>>;
 	validationFailed: boolean;
 	setValidationFailed: React.Dispatch<React.SetStateAction<boolean>>;
+	isDone: boolean;
+	setIsDone: React.Dispatch<React.SetStateAction<boolean>>;
+	degrees: Degree[];
+	setDegrees: React.Dispatch<React.SetStateAction<Degree[]>>;
+}
+
+export interface Degree {
+	id: number;
+	title: string;
 }

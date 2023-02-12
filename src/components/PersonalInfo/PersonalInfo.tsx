@@ -8,7 +8,7 @@ import ValidationError from '../Reusable/ValidationError';
 import { useFormCtx } from '../../store/formContext';
 
 const PersonalInfo = () => {
-	const { validationFailed } = useFormCtx();
+	const { validationFailed, resumeData } = useFormCtx();
 	return (
 		<StyledWrapper>
 			<FormWrapper heading='პირადი ინფო' page={1}>
@@ -18,7 +18,7 @@ const PersonalInfo = () => {
 					<NavigationBtns />
 				</FormInnerWrapper>
 			</FormWrapper>
-			<Preview />
+			<Preview data={resumeData} />
 		</StyledWrapper>
 	);
 };
