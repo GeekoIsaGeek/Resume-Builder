@@ -20,7 +20,7 @@ const BuiltResume = () => {
 		})
 		.map((edu) => {
 			return {
-				degree_id: Array.from(degrees.map((degree) => degree.title)).indexOf(edu.degree.value),
+				degree_id: Array.from(degrees.map((degree) => degree.title)).indexOf(edu.degree.value) + 1,
 				institute: edu.institute.value,
 				degree: edu.degree.value,
 				due_date: edu.due_date.value.replaceAll('/', '-'),

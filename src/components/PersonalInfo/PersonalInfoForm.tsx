@@ -28,19 +28,6 @@ const PersonalInfoForm = () => {
 		}
 	};
 
-	const getFormattedValue = () => {
-		const init = resumeData.phone_number.value.replaceAll(' ', '');
-		let value: string = '';
-		for (let i = 0; i < init.length; i++) {
-			if (i === 3 || i === 6 || i === 8 || i === 10) {
-				value += init[i] + ' ';
-			} else {
-				value += init[i];
-			}
-		}
-		return value;
-	};
-
 	return (
 		<StyledForm>
 			<StyledInputGroup>
