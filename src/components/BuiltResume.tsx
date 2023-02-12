@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react';
 import { useFormCtx } from '../store/formContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import RestartBtn from './Reusable/RestartBtn';
+import { IoIosClose } from 'react-icons/io';
 
 const BuiltResume = () => {
 	const [data, setData] = useState(initialResumeState);
 	const { resumeData, degrees } = useFormCtx();
+	const [showNotification, setShowNotification] = useState(false);
 	const navigate = useNavigate();
 
 	const educations = resumeData.educations
@@ -71,10 +74,12 @@ const BuiltResume = () => {
 
 				const res = await axios.post(`${baseUrl}/api/cvs`, formData);
 				setData({ ...res.data, image: `${baseUrl}${res.data.image}` });
+				setShowNotification(true);
 			} catch (err) {
 				// @ts-ignore
 				console.log(err.message);
-				alert('მონაცემების ბაზაში ჩაწერა ვერ მოხერხდა, სცადეთ ხელახლა!');
+				setShowNotification(false);
+				alert('დაფიქსირდა შეცდომა, სცადეთ ხელახლა!');
 				console.clear();
 				navigate('/resume/personal-info');
 			}
@@ -84,7 +89,13 @@ const BuiltResume = () => {
 
 	return (
 		<StyledResume>
-			<Preview data={data} style={{ border: '0.8px solid #000000', margin: '54px 0' }} />
+			<RestartBtn style={{ background: '#F9F9F9' }} />
+			<Preview data={data} style={{ border: '0.8px solid #000000' }} />
+			{showNotification && (
+				<StyledNotification>
+					<p>რეზიუმე წარმატებით გაიგზავნა 🎉</p> <IoIosClose onClick={() => setShowNotification(false)} />
+				</StyledNotification>
+			)}
 		</StyledResume>
 	);
 };
@@ -95,4 +106,31 @@ const StyledResume = styled.div`
 	display: flex;
 	width: 100%;
 	justify-content: center;
+	gap: 52px;
+	padding: 54px 0;
+`;
+const StyledNotification = styled.div`
+	font-size: 28px;
+	font-weight: 600;
+	padding: 40px 30px;
+	box-shadow: 0px 4px 28px 0px #00000040;
+	color: ${(props) => props.theme.colors.offBlack};
+	border: 1px solid #e4e4e4;
+	height: max-content;
+	border-radius: 8px;
+	position: relative;
+	p {
+		width: 364px;
+	}
+	svg {
+		position: absolute;
+		top: 17px;
+		right: 11px;
+		font-size: 36px;
+		cursor: pointer;
+		transition: color 0.2s ease-out;
+		&:hover {
+			color: gray;
+		}
+	}
 `;

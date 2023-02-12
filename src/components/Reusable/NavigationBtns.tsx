@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useFormCtx } from '../../store/formContext';
 import { Experience, Education } from '../../store/FormContext-Types';
+import initialResumeState from '../../store/initialResumeState';
 
 const NavigationBtns = () => {
 	const navigate = useNavigate();
