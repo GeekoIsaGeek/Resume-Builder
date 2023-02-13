@@ -88,7 +88,7 @@ const BuiltResume = () => {
 	}, []);
 
 	return (
-		<StyledResume>
+		<StyledResume showNotification={showNotification}>
 			<RestartBtn style={{ background: '#F9F9F9' }} />
 			<Preview data={data} style={{ border: '0.8px solid #000000' }} />
 			{showNotification && (
@@ -102,12 +102,15 @@ const BuiltResume = () => {
 
 export default BuiltResume;
 
-const StyledResume = styled.div`
+interface StyledResumeProps {
+	showNotification: boolean;
+}
+const StyledResume = styled.div<StyledResumeProps>`
 	display: flex;
 	width: 100%;
-	justify-content: center;
+	justify-content: ${(props) => (props.showNotification ? 'flex-end' : 'center')};
 	gap: 52px;
-	padding: 54px 0;
+	padding: 54px 70px;
 `;
 const StyledNotification = styled.div`
 	font-size: 28px;
